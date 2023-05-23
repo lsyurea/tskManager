@@ -1,4 +1,11 @@
+package cmd
+
 import (
 	"backend/config"
-	"backend/controller/userController"
+	"backend/api"
 )
+
+func main() {
+	config.Init()
+	api.StartServer()
+}

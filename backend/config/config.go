@@ -33,13 +33,13 @@ var Config = ConfigType{
 	POSTGRES_SERVER_HOST: "localhost",
 }
 
-func init() {
+func Init() {
 	env, exists := os.LookupEnv(ENVIROMENT)
 	var envFilePath string
 	if exists && env == "test" {
-		envFilePath = "../.env.test"
+		envFilePath, _ = filepath.Abs("../.env.test")
 	} else {
-		envFilePath = filepath.Abs("../.env")
+		envFilePath, _ = filepath.Abs("../.env")
 	}
 	
 	if err := godotenv.Load(envFilePath); err != nil {
@@ -55,7 +55,7 @@ func init() {
 		RUN_MIGRATIONS: true,
 	}
 
-	for key, _ := range Config {
+	for key := range Config {
 		value, exists := os.LookupEnv(key)
 		if !exists && required[key] {
 			log.WithField("key", key).Fatal("Missing required configuration")
@@ -63,5 +63,5 @@ func init() {
 		Config[key] = value
 	}
 
-	log.info("Configuration loaded")
+	log.Info("Configuration loaded")
 }
