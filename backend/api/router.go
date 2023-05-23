@@ -21,8 +21,8 @@ func httpServer(db *sql.DB) *fiber.App {
 	app.Use(logger.New())
 	app.Use(requestid.New())
 
-	api := app.Group("/api")
-	api.Use(cors.New(cors.Config{
+	apiObj := app.Group("/api")
+	apiObj.Use(cors.New(cors.Config{
 		AllowOrigins:     config.Config[config.CLIENT_URL],
 		AllowCredentials: true,
 		AllowHeaders:     "Content-Type, Content-Length, Accept-Encoding, Authorization, accept, origin",
@@ -30,14 +30,14 @@ func httpServer(db *sql.DB) *fiber.App {
 		ExposeHeaders:    "Set-Cookie",
 	}))
 
-	// api endpoints
+	// api endpoints rest api to integrate to frontend login page
 
-	api.Post("/login", WithDB(Login, db))
-	api.Post("/register", WithDB(CreateUser, db))
-	api.Get("/logout", Logout)
+	apiObj.Post("/login", WithDB(Login, db))
+	apiObj.Post("/register", WithDB(CreateUser, db))
+	apiObj.Get("/logout", Logout)
 
 	// authed routes
-	api.Get("/session", AuthorizeSession, WithDB(Session, db))
+	apiObj.Get("/session", AuthorizeSession, WithDB(Session, db))
 
 	return app
 }

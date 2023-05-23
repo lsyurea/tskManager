@@ -1,5 +1,7 @@
 package db
 
+// postgres commands
+
 const (
 	CheckUserExists         = `SELECT true from users WHERE email = $1`
 	LoginQuery              = `SELECT * from users WHERE email = $1`
