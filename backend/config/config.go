@@ -29,7 +29,6 @@ var Config = ConfigType{
 	CLIENT_URL: "",
 	SERVER_PORT: "",
 	JWT_KEY: "",
-	RUN_MIGRATIONS: "",
 	POSTGRES_SERVER_HOST: "localhost",
 }
 
@@ -52,7 +51,6 @@ func Init() {
 		POSTGRES_DB: true,
 		CLIENT_URL: true,
 		SERVER_PORT: true,
-		RUN_MIGRATIONS: true,
 	}
 
 	for key := range Config {
