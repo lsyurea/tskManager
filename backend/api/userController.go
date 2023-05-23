@@ -17,10 +17,6 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-func Pong(c *fiber.Ctx) error {
-	return c.SendString("pong")
-}
-
 func CreateUser(c *fiber.Ctx, dbConn *sql.DB) error {
 	user := &db.User{}
 

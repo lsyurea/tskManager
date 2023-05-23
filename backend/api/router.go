@@ -30,8 +30,7 @@ func httpServer(db *sql.DB) *fiber.App {
 		ExposeHeaders:    "Set-Cookie",
 	}))
 
-	// public
-	api.Get("/ping", Pong)
+	// api endpoints
 
 	api.Post("/login", WithDB(Login, db))
 	api.Post("/register", WithDB(CreateUser, db))
