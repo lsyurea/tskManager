@@ -14,9 +14,16 @@ function SignUp() {
                 username: username,
                 email: email,
                 password: password,
+                options: {
+                    data: {
+                        username: username,
+                    }
+                }
             })
-      
-            console.log('Signup submitted:', username, password, email);
+            if (error) {
+                throw error
+            }
+            console.log('Signup submitted:', data);
 
             alert('Check your email for the confirmation link!')
 
