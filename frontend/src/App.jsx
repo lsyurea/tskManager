@@ -3,7 +3,7 @@ import Login from './components/login/login'
 import SignUp from './components/signup/SignUp'
 import DashBoard from './components/dashboard/Dashboard'
 import ErrorPage from './components/ErrorPage'
-import { createBrowserRouter, RouterProvider, Route, Link } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
