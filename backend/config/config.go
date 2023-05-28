@@ -36,9 +36,9 @@ func Init() {
 	env, exists := os.LookupEnv(ENVIROMENT)
 	var envFilePath string
 	if exists && env == "test" {
-		envFilePath, _ = filepath.Abs("../.env.test")
+		envFilePath, _ = filepath.Abs(".env.test")
 	} else {
-		envFilePath, _ = filepath.Abs("../.env")
+		envFilePath, _ = filepath.Abs(".env")
 	}
 	
 	if err := godotenv.Load(envFilePath); err != nil {

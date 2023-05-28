@@ -1,5 +1,6 @@
 import './App.css'
 import Login from './components/login/login'
+import SignUp from './components/signup/SignUp'
 import DashBoard from './components/dashboard/Dashboard'
 import ErrorPage from './components/ErrorPage'
 import { createBrowserRouter, RouterProvider, Route, Link } from 'react-router-dom'
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <DashBoard />,
+  },
+  {
+    path: '/signup',
+    element: <SignUp />,
   },
   {
     path: '*',
@@ -28,8 +33,8 @@ function App() {
 
       <RouterProvider router={router} />
 
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      <p className="info">
+        ur one and only task manager :)
       </p>
     </>
   )
