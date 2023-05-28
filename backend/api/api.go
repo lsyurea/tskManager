@@ -10,6 +10,7 @@ import (
 var server *fiber.App
 
 func StartServer() {
+	
 	conn, err := db.ConnectDB()
 	if err != nil {
 		log.WithField("reason", err.Error()).Fatal("Db connection error occurred")

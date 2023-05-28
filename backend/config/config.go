@@ -10,7 +10,7 @@ import (
 
 const (
 	POSTGRES_USER = "POSTGRES_USER"
-	POSTGRESS_PASSWORD = "POSTGRESS_PASSWORD"
+	POSTGRES_PASSWORD = "POSTGRES_PASSWORD"
 	POSTGRES_DB = "POSTGRES_DB"
 	CLIENT_URL = "CLIENT_URL"
 	SERVER_PORT = "SERVER_PORT"
@@ -24,7 +24,7 @@ type ConfigType map[string]string
 
 var Config = ConfigType{
 	POSTGRES_USER: "",
-	POSTGRESS_PASSWORD: "",
+	POSTGRES_PASSWORD: "",
 	POSTGRES_DB: "",
 	CLIENT_URL: "",
 	SERVER_PORT: "",
@@ -47,7 +47,7 @@ func Init() {
 
 	required := map[string]bool{
 		POSTGRES_USER: true,
-		POSTGRESS_PASSWORD: true,
+		POSTGRES_PASSWORD: true,
 		POSTGRES_DB: true,
 		CLIENT_URL: true,
 		SERVER_PORT: true,

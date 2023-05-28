@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	"backend/config"
+
+	_ "github.com/lib/pq" // postgres driver
 )
 
 func ConnectDB() (*sql.DB, error) {
@@ -13,7 +15,11 @@ func ConnectDB() (*sql.DB, error) {
 
 	connectionString := fmt.Sprintf("postgresql://%s@%s:5432/%s?sslmode=disable", user, database, host)
 
-	db, _ := sql.Open("postgres", connectionString)
+	db, err := sql.Open("postgres", connectionString)
+	if err != nil {
+		return nil, err
+	}
+
 	if err := db.Ping(); err != nil {
 		return nil, err;
 	}
