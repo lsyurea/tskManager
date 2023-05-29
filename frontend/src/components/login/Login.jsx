@@ -59,7 +59,7 @@ function Login() {
             </div>
             <button type="submit">Login</button>
             </form>
-            <p>Don't have an account? Click to <a href="/signup">Sign up</a></p>
+            <p>No Bitches? Click to <a href="/signup">Sign up</a></p>
         </div>
     );
 }
