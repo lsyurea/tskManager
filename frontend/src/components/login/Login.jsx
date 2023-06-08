@@ -3,7 +3,7 @@ import './Login.css'
 import { supabase } from "../../helper/SupabaseClient"
 import { useNavigate } from 'react-router-dom'
 
-function Login() {
+function Login({ setToken }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -23,7 +23,11 @@ function Login() {
             if (data.session == null) {
                 alert('Invalid username or password')
             } else {
+
+                // debugging to check for token
                 console.log('Login submitted:', data);
+                // set the token to be used for other app.jsx component
+                setToken(data);
                 navigate('/dashboard')
             }
             

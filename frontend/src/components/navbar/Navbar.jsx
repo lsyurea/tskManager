@@ -13,7 +13,7 @@ function Navbar() {
             <nav className="navigation">
                 <a href="/">Home</a>
                 <a href="#">About</a>
-                <a href="#">Services</a>
+                <a href="/dashboard">Dashboard</a>
                 <a href="#">Contact</a>
                 <button className="btnLogin-popup" onClick={loginPopup}>Login</button>
             </nav>
