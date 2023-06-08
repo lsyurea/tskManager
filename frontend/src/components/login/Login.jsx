@@ -8,7 +8,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    async function handleSubmit(event) {
+    async function handleLogin(event) {
         try {
             event.preventDefault();
             // Perform login logic here
@@ -37,29 +37,33 @@ function Login() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
+        <div className="wrapper">
+            <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
+            <form className="form-box login" onSubmit={handleLogin}>
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
             <button type="submit">Login</button>
             </form>
-            <p>No Bitches? Click to <a href="/signup">Sign up</a></p>
+            <div className="details"> 
+                <p>No account? Click to <a href="/signup">Sign up</a></p>
+                <p>Forget password? Click to <a href="/changePassword">Change password</a></p>
+            </div>
         </div>
     );
 }
