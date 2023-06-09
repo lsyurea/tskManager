@@ -8,7 +8,7 @@ const Todo = ({ todo, onDelete }) => {
     } 
     return (
         <div className="todo">
-            <h3>{todo.title}</h3>
+            <h3>{todo.task}</h3>
             <button onClick={handleDelete}><MdDelete /></button>
         </div>
     )
@@ -18,7 +18,7 @@ const Todo = ({ todo, onDelete }) => {
 Todo.propTypes = {
     todo: PropTypes.shape({
       id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
+      task: PropTypes.string.isRequired,
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
 };

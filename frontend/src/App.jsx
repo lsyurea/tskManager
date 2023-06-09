@@ -10,7 +10,7 @@ import ChangePassword from './components/login/ChangePassword'
 import { useState, useEffect } from 'react'
 
 function App() {
-
+  // token is globally accessible
   const [token, setToken] = useState(null);
 
   if (token) {
@@ -26,7 +26,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home />,
+      element: <Home token={token}/>,
     },
     {
       path: '/login',
@@ -38,7 +38,7 @@ function App() {
     },
     {
       path: '/dashboard',
-      element: token ? <DashBoard /> : <Login setToken={setToken}/>,
+      element: token ? <DashBoard token={token}/> : <Login setToken={setToken}/>,
     },
     {
       path: '/signup',
@@ -52,11 +52,11 @@ function App() {
 
   return (
     <>
-      <div>
-        <Navbar />
+      <div className="window">
+        <Navbar token={token}/>
         {/* <h1>tskManager</h1> */}
 
-        <RouterProvider router={router} />
+        <RouterProvider className="card" router={router} />
 
         {/* <p className="info">
           ur one and only task manager :)

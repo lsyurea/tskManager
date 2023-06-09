@@ -10,15 +10,23 @@
 /* make the body the background image */
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     min-height: 100vh;
+    min-width: 100vw;
     background-image: url('/src/assets/background.jpg');
     background-size: cover;
     background-position: center;
 }
 
-
+.window {
+    display: flex;
+    height: 70vh;
+    width: 70vw;
+    align-items: center;
+    justify-content: center;
+    
+}
 
 /* .input-box {
     position: relative;
