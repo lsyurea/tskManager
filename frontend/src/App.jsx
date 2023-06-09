@@ -38,7 +38,7 @@ function App() {
     },
     {
       path: '/dashboard',
-      element: token ? <DashBoard token={token}/> : <Login setToken={setToken}/>,
+      element: <DashBoard token={token}/>,
     },
     {
       path: '/signup',
