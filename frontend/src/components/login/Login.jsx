@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import './Login.css'
+import { useEffect } from 'react'; 
+import { useState } from 'react'
 import { supabase } from "../../helper/SupabaseClient"
 import { useNavigate } from 'react-router-dom'
 
@@ -37,36 +38,51 @@ function Login({ setToken }) {
         } catch (error) {
         alert(error)
         }
-        
     }
+
+    useEffect(() => {
+        const script1 = document.createElement('script');
+        script1.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
+        script1.type = 'module';
+        document.body.appendChild(script1);
+    
+        const script2 = document.createElement('script');
+        script2.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js';
+        script2.setAttribute('nomodule', '');
+        document.body.appendChild(script2);
+    
+        return () => {
+          // Cleanup script tags if necessary
+          document.body.removeChild(script1);
+          document.body.removeChild(script2);
+        };
+      }, []);
 
     return (
         <div className="wrapper">
             <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
-            <form className="form-box login" onSubmit={handleLogin}>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-            <button type="submit">Login</button>
-            </form>
-            <div className="details"> 
-                <p>No account? Click to <a href="/signup">Sign up</a></p>
-                <p>Forget password? Click to <a href="/changePassword">Change password</a></p>
+            <div className="form-box login">
+                <h2>Login</h2>
+                <form onSubmit={handleLogin}>
+                    <div className="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <label htmlFor="email">Email</label>
+                    </div>
+                    <div className="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <label htmlFor="password">Password</label>
+                    </div>
+                    <div className="remember-forgot">
+                        <label><input type="checkbox"/> Remember me</label>
+                        <a href="/changePassword">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <div className="login-register">
+                        <p>Don't have an account? <a href="/signup" class="register-link">Register</a></p>
+                    </div>
+                </form>
             </div>
         </div>
     );
