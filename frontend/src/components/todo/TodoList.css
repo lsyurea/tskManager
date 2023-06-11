@@ -13,3 +13,8 @@
 .box {
     min-width: 50%
 }
+
+.todo-list {
+    max-height: 30rem;
+    overflow-y: auto;
+}

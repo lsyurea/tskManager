@@ -5,6 +5,7 @@ import DashBoard from './components/dashboard/Dashboard'
 import ErrorPage from './components/ErrorPage'
 import Navbar from './components/navbar/Navbar'
 import Home from './components/home/Home'
+import MyCalendar from './components/calendar/MyCalendar'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import ChangePassword from './components/login/ChangePassword'
 import { useState, useEffect } from 'react'
@@ -39,6 +40,10 @@ function App() {
     {
       path: '/dashboard',
       element: <DashBoard token={token}/>,
+    },
+    {
+      path: '/calendar',
+      element: <MyCalendar token={token}/>,
     },
     {
       path: '/signup',
