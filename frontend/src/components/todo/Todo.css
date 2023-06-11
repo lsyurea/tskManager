@@ -1,0 +1,13 @@
+.todo {
+    background-color: rgb(132, 175, 175);
+    display: flex;
+    justify-content: space-between;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.todo:hover {
+    border-color: blue;
+}

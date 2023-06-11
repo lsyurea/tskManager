@@ -1,3 +1,4 @@
+import './SignUp.css';
 import { useState } from 'react';
 import { supabase } from "../../helper/SupabaseClient"
 
@@ -39,8 +40,9 @@ function SignUp() {
     }
   
     return (
-        <div> 
-            <form onSubmit={handleSubmit}>
+        <div className='wrapper'> 
+            <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
+            <form className="form-box signup" onSubmit={handleSubmit}>
                 <div>
                 <label htmlFor="username">Username:</label>
                 <input
@@ -71,7 +73,7 @@ function SignUp() {
 
                 <button type="submit">Sign up</button>
             </form>
-            <p>Already have an account? Click to <a href="/">Login</a></p>
+            <p>Already have an account? Click to <a href="/login">Login</a></p>
         </div>
     );
   }
