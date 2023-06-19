@@ -53,6 +53,7 @@ function TodoList({token}) {
             alert(error)
             return
         } 
+        fetchTodo()
     }
 
     // create
@@ -115,7 +116,7 @@ function TodoList({token}) {
             </form>
             <div className="todo-list">
                 {todos.map((todo) => (
-                    <Todo key={todo.id} todo={todo} onDelete={deleteTodo} />
+                    <Todo key={todo.id} todo={todo} onDelete={deleteTodo} onUpdate={updateTodo}/>
                 ))}
                 
             </div>
