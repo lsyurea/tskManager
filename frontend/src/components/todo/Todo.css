@@ -6,8 +6,13 @@
     border-width: 1px;
     border-style: solid;
     border-radius: 5px;
+    padding: 1rem;
 }
 
 .todo:hover {
     border-color: blue;
+}
+
+.buttons button{
+    margin-left: 1rem;
 }
