@@ -1,4 +1,4 @@
-.wrapper {
+.wrapper-login {
     position: relative;
     width: 400px;
     height: 440px;
@@ -13,12 +13,12 @@
     overflow: hidden;
 }
 
-.wrapper .form-box {
+.wrapper-login .form-box {
     width: 100%;
     padding: 40px;
 }
 
-.wrapper .icon-close {
+.wrapper-login .icon-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -35,7 +35,7 @@
     z-index: 1;
 }
 
-.wrapper .icon-close:hover {
+.wrapper-login .icon-close:hover {
     background-color: rgb(209, 34, 58);
 }
 
@@ -148,7 +148,7 @@
     height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 /* .sm-b {

@@ -59,28 +59,28 @@ function Login({ setToken }) {
       }, []);
 
     return (
-        <div className="wrapper">
+        <div className="wrapper-login">
             <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
             <div className="form-box login">
                 <h2>Login</h2>
                 <form onSubmit={handleLogin}>
                     <div className="input-box">
-                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <span className="icon"><ion-icon name="mail"></ion-icon></span>
                         <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         <label htmlFor="email">Email</label>
                     </div>
                     <div className="input-box">
-                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <span className="icon"><ion-icon name="lock-closed"></ion-icon></span>
                         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <label htmlFor="password">Password</label>
                     </div>
                     <div className="remember-forgot">
-                        <label><input type="checkbox"/> Remember me</label>
+                        {/* <label><input type="checkbox"/> Remember me</label> */}
                         <a href="/changePassword">Forgot Password?</a>
                     </div>
-                    <button type="submit" class="btn">Login</button>
+                    <button type="submit" className="btn">Login</button>
                     <div className="login-register">
-                        <p>Don't have an account? <a href="/signup" class="register-link">Register</a></p>
+                        <p>Don't have an account? <a href="/signup" className="register-link">Register</a></p>
                     </div>
                 </form>
             </div>

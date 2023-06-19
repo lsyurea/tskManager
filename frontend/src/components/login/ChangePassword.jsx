@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from "../../helper/SupabaseClient"
 
 function ChangePassword() {
@@ -13,8 +13,27 @@ function ChangePassword() {
         }
         console.log('Password changed:', data);
     }
+
+    useEffect(() => {
+        const script1 = document.createElement('script');
+        script1.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
+        script1.type = 'module';
+        document.body.appendChild(script1);
+    
+        const script2 = document.createElement('script');
+        script2.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js';
+        script2.setAttribute('nomodule', '');
+        document.body.appendChild(script2);
+    
+        return () => {
+          // Cleanup script tags if necessary
+          document.body.removeChild(script1);
+          document.body.removeChild(script2);
+        };
+      }, []);
+
     return (
-        <div className="wrapper">
+        <div className="wrapper-login">
             <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
             <form className="form-box login" onSubmit={handleSubmit}>
                 <div>
