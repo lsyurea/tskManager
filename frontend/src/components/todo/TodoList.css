@@ -15,6 +15,6 @@
 }
 
 .todo-list {
-    max-height: 30rem;
+    max-height: 20rem;
     overflow-y: auto;
 }

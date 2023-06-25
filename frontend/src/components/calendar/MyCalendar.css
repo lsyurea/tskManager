@@ -1,10 +1,17 @@
 .cal {
-    background-color: rgb(147, 61, 61);
-    min-height:500px;
+    background-color: rgb(119, 86, 86);
+    /* border-width: 5 px;
+    border-color: rgb(40, 35, 35); */
+    /* position: fixed;
+    top: 10rem;
+    left: 10rem; */
+    height: 500px;
+    width: 100%;
+    min-height: 500px;
 }
 
 .cal-in {
-    min-height: 500px;
+    /* min-height: 500px;
     height: 500px;
-    margin: 50px;
+    margin: 50px; */
 }
