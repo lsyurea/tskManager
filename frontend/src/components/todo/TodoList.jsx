@@ -73,7 +73,6 @@ function TodoList({token}) {
         if (error) {
             alert(error)
         } else {
-            console.log('Todo added:', newTodo)
             setNewTodo('')
             fetchTodo()
         }
@@ -91,7 +90,6 @@ function TodoList({token}) {
         if (error) {
             alert(error)
         } else {
-            console.log('Todo updated:', data)
             fetchTodo()
         }
     }
