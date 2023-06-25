@@ -99,8 +99,7 @@ function TodoList({token}) {
     // keeps fetching the todos from the database
     useEffect(() => {
         fetchTodo()
-        console.log(todos)
-    }, [])
+    })
 
     if (!user()) {
         return (

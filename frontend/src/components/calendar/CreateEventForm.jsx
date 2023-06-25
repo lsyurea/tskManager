@@ -1,11 +1,14 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { supabase } from '../../helper/SupabaseClient'
 
-function CreateEventForm({ onEventCreate }) {
+function CreateEventForm( {extraFunction}) {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+
+  const user = () => JSON.parse(sessionStorage.getItem('token')).user;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,19 +20,28 @@ function CreateEventForm({ onEventCreate }) {
     }
 
     // Create new event object
-    const newEvent = {
-      title: title,
-      start: startDate,
-      end: endDate,
-    };
-
-    // Pass the new event to the parent component
-    onEventCreate(newEvent);
+    addEvent();
 
     // Clear form inputs
     setTitle("");
     setStartDate(null);
     setEndDate(null);
+    extraFunction();
+  };
+
+  const addEvent = async () => {
+    if (!user()) return
+    const { error } = await supabase.from('events').insert([
+      {
+        user_id: user().id,
+        title: title,
+        start: startDate.toISOString(),
+        end: endDate.toISOString(),
+      }
+    ]);
+    if (error) {
+      alert(error);
+    }
   };
 
   return (

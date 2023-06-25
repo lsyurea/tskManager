@@ -31,12 +31,6 @@ function MyCalendar( {token} ) {
 
   // events
   const [events, setEvents] = useState([]);
-  // event
-  const [newEvent, setNewEvent] = useState({
-    title: "",
-    start: new Date(),
-    end: new Date(),
-  });
 
   // to hide create form
   const [showForm, setShowForm] = useState(false);
@@ -46,8 +40,6 @@ function MyCalendar( {token} ) {
   const handleEventClick = () => {
     setShowForm(true);
   }
-
-
 
   // fetch events from database
   const fetchEvent = async () => {
@@ -71,34 +63,13 @@ function MyCalendar( {token} ) {
   }
 
   // create event
-  const handleEventCreate = (newEvent) => { 
-    setNewEvent(newEvent);
+  const handleEventCreate = () => { 
     setShowForm(false);
-    addEvent();
-
   }
-
-  const addEvent = async () => {
-    if (!user()) return
-    const { error } = await supabase.from('events').insert([
-      {
-        user_id: user().id,
-        title: newEvent.title,
-        start: newEvent.start.toISOString(),
-        end: newEvent.end.toISOString(),
-      }
-    ]);
-    if (error) {
-      alert(error);
-      return;   
-    } else {
-      fetchEvent();
-    }
-  };
 
   useEffect(() => {
     fetchEvent();
-  }, []);
+  });
 
   if (token == null) {
     return (
@@ -138,7 +109,7 @@ function MyCalendar( {token} ) {
         {
           showForm && (
           <div>
-            <CreateEventForm onEventCreate={handleEventCreate} />
+            <CreateEventForm extraFunction={handleEventCreate}/>
         </div>)
         }
       </div>
