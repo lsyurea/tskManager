@@ -57,44 +57,6 @@ function SignUp() {
        
     }
   
-    // return (
-    //     <div className='wrapper-signup'> 
-    //         <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
-    //         <form className="form-box signup" onSubmit={handleSubmit}>
-    //             <div>
-    //             <label htmlFor="username">Username:</label>
-    //             <input
-    //                 type="text"
-    //                 id="username"
-    //                 value={username}
-    //                 onChange={(e) => setUsername(e.target.value)}
-    //             />
-    //             </div>
-    //             <div>
-    //             <label htmlFor="password">Password:</label>
-    //             <input
-    //                 type="password"
-    //                 id="password"
-    //                 value={password}
-    //                 onChange={(e) => setPassword(e.target.value)}
-    //             />
-    //             </div>
-    //             <div>
-    //             <label htmlFor="email">Email:</label>
-    //             <input
-    //                 type="email"
-    //                 id="email"
-    //                 value={email}
-    //                 onChange={(e) => setEmail(e.target.value)}
-    //             />
-    //             </div>
-
-    //             <button type="submit">Sign up</button>
-    //         </form>
-    //         <p>Already have an account? Click to <a href="/login">Login</a></p>
-    //     </div>
-    // );
-
     return (
         <div className="wrapper-signup">
             <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
@@ -102,23 +64,18 @@ function SignUp() {
                 <h2>Signup</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
-                    <span className="icon"><ion-icon name="accessibility"></ion-icon></span>
-                    <input
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <label htmlFor="username">Username:</label>
+                        <span className="icon"><ion-icon name="accessibility"></ion-icon></span>
+                        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+                        <label htmlFor="username">Username:</label>
                     </div>
                     <div className="input-box">
                         <span className="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                         <label htmlFor="email">Email</label>
                     </div>
                     <div className="input-box">
                         <span className="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                         <label htmlFor="password">Password</label>
                     </div>
                     <div className="remember-forgot">

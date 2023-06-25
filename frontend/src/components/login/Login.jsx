@@ -66,12 +66,12 @@ function Login({ setToken }) {
                 <form onSubmit={handleLogin}>
                     <div className="input-box">
                         <span className="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                         <label htmlFor="email">Email</label>
                     </div>
                     <div className="input-box">
                         <span className="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                         <label htmlFor="password">Password</label>
                     </div>
                     <div className="remember-forgot">
@@ -80,7 +80,7 @@ function Login({ setToken }) {
                     </div>
                     <button type="submit" className="btn">Login</button>
                     <div className="login-register">
-                        <p>Don't have an account? <a href="/signup" className="register-link">Register</a></p>
+                        <p>Don't have an account? <a href="/signup" className="register-link">Sign Up</a></p>
                     </div>
                 </form>
             </div>

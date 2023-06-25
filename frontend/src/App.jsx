@@ -1,5 +1,5 @@
 import './App.css'
-import Login from './components/login/login'
+import Login from './components/login/Login'
 import SignUp from './components/signup/SignUp'
 import DashBoard from './components/dashboard/Dashboard'
 import ErrorPage from './components/ErrorPage'
@@ -7,7 +7,7 @@ import Navbar from './components/navbar/Navbar'
 import Home from './components/home/Home'
 import MyCalendar from './components/calendar/MyCalendar'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
-import ChangePassword from './components/login/ChangePassword'
+import ChangePassword from './components/changepassword/ChangePassword'
 import { useState, useEffect } from 'react'
 
 function App() {

@@ -1,3 +1,4 @@
+import './ChangePassword.css'
 import { useState, useEffect } from 'react';
 import { supabase } from "../../helper/SupabaseClient"
 
@@ -33,23 +34,22 @@ function ChangePassword() {
       }, []);
 
     return (
-        <div className="wrapper-login">
+        <div className="wrapper-changepassword">
             <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
-            <form className="form-box login" onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="password">Enter your current email:</label>
-                    <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-            <button type="submit">Submit</button>
-            </form>
-            <div className="details"> 
-                <p>No account? Click to <a href="/signup">Sign up</a></p>
-                <p>Already have an account? Click to <a href="/login">Login</a></p>
+            <div className="form-box login">
+                <h2>Change Password</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="input-box">
+                        <span className="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                        <label htmlFor="email">Enter your current email:</label>
+                    </div>
+                    <button type="submit" className="btn">Submit</button>
+                    <div className="login-register"> 
+                        <p>Don't have an account? Click to <a href="/signup">Sign up</a></p>
+                        <p>Already have an account? Click to <a href="/login">Login</a></p>
+                    </div>
+                </form>
             </div>
         </div>
     );
