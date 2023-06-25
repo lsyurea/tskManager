@@ -35,10 +35,7 @@ function MyCalendar( {token} ) {
   // to hide create form
   const [showForm, setShowForm] = useState(false);
 
-  const handleEventCreate = (newEvent) => { 
-    setNewEvent(newEvent);
-    setShowForm(false);
-  }
+
 
   const handleEventClick = () => {
     setShowForm(true);
@@ -71,10 +68,23 @@ function MyCalendar( {token} ) {
   }
 
   // create event
-  const addEvent = async (e) => {
-    e.preventDefault();
+  const handleEventCreate = (newEvent) => { 
+    setNewEvent(newEvent);
+    setShowForm(false);
+    addEvent();
+
+  }
+
+  const addEvent = async () => {
     if (!user()) return
-    const { data, error } = await supabase.from('events').insert([newEvent]);
+    const { error } = await supabase.from('events').insert([
+      {
+        user_id: user().id,
+        title: newEvent.title,
+        start: newEvent.start,
+        end: newEvent.end,
+      }
+    ]);
     if (error) {
       alert(error);
       return;   
