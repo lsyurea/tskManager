@@ -22,6 +22,12 @@ const localizer = dateFnsLocalizer({
 });
 
 function MyCalendar( {token} ) {
+  console.log(token);
+  // authentication
+  const user = () => {
+    const curToken = JSON.parse(sessionStorage.getItem('token'));
+    return curToken.user;
+  }
 
   // events
   const [events, setEvents] = useState([]);
@@ -41,10 +47,7 @@ function MyCalendar( {token} ) {
     setShowForm(true);
   }
 
-  // authentication
-  const user = () => {
-    return token.user;
-  }
+
 
   // fetch events from database
   const fetchEvent = async () => {
@@ -81,8 +84,8 @@ function MyCalendar( {token} ) {
       {
         user_id: user().id,
         title: newEvent.title,
-        start: newEvent.start,
-        end: newEvent.end,
+        start: newEvent.start.toISOString(),
+        end: newEvent.end.toISOString(),
       }
     ]);
     if (error) {

@@ -24,6 +24,8 @@ function App() {
     }
   },[])
 
+  console.log(token);
+
   const router = createBrowserRouter([
     {
       path: '/',

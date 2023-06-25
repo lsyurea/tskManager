@@ -9,7 +9,7 @@ function TodoList({token}) {
 
     // authentication
     const user = () => {
-        return token.user;
+        return JSON.parse(sessionStorage.getItem('token')).user;
     }
 
     // crud operations
