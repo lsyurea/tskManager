@@ -24,7 +24,9 @@ function App() {
     }
   },[])
 
-  console.log(token);
+  // correct routing for deployment purpose
+  const isNetlify = process.env.NODE_ENV === 'production'
+  const basename = isNetlify ? '/frontend' : '/'
 
   const router = createBrowserRouter([
     {
@@ -55,7 +57,7 @@ function App() {
       path: '*',
       element: <ErrorPage />,
     }
-  ])
+  ], { basename })
 
   return (
     <>
