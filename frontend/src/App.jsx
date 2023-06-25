@@ -25,8 +25,7 @@ function App() {
   },[])
 
   // correct routing for deployment purpose
-  const isNetlify = process.env.NODE_ENV === 'production'
-  const basename = isNetlify ? '/frontend' : '/'
+  const basename = '/'
 
   const router = createBrowserRouter([
     {
