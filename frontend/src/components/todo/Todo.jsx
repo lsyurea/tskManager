@@ -30,6 +30,7 @@ const Todo = ({ todo, onDelete, onUpdate }) => {
             {edit 
                 ? <input 
                     type="text"
+                    style={{ backgroundColor: 'rgba(48, 69, 68, 0.5)', width: '50%'}}
                     value={task}
                     onChange={handleInputChange}
                     onBlur={handleUpdate}

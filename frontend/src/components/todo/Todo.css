@@ -1,5 +1,5 @@
 .todo {
-    background-color: rgba(132, 175, 175, 0.7);
+    background-color: rgba(127, 170, 168, 0.7);
     display: flex;
     justify-content: space-between;
     border-color: black;
@@ -10,7 +10,8 @@
 }
 
 .todo:hover {
-    border-color: blue;
+    /* border-color: rgb(184, 71, 71);
+    border-width: 2px; */
 }
 
 .buttons button{

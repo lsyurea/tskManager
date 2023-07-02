@@ -12,7 +12,10 @@
 
 .box {
     min-width: 50%;
-    background-color: rgb(48, 69, 68);
+    background-color: rgba(48, 69, 68, 0.7);
+}
+.box::placeholder {
+    color: white;
 }
 
 .todo-list {
