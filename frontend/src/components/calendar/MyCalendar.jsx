@@ -25,7 +25,7 @@ function MyCalendar() {
   // authentication
   const user = () => {
     const curToken = JSON.parse(sessionStorage.getItem('token'));
-    return curToken.user;
+    return curToken ? curToken.user : curToken;
   }
 
   // events
@@ -42,6 +42,7 @@ function MyCalendar() {
 
   // fetch events from database
   const fetchEvent = async () => {
+    if (!user()) return
     const {data: events, error} = await supabase
     .from('events')
     .select('*')
