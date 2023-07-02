@@ -46,38 +46,40 @@ function CreateEventForm( {extraFunction}) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="startDate">Start Date:</label>
-        <DatePicker
-          id="startDate"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          showTimeSelect
-          dateFormat="Pp"
-        />
-      </div>
-      <div>
-        <label htmlFor="endDate">End Date:</label>
-        <DatePicker
-          id="endDate"
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          showTimeSelect
-          dateFormat="Pp"
-        />
-      </div>
-      <button type="submit">Create Event</button>
-    </form>
+    <div className="eventCard">
+      <form className="eventForm" onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="startDate">Start Date:</label>
+          <DatePicker
+            id="startDate"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            showTimeSelect
+            dateFormat="Pp"
+          />
+        </div>
+        <div>
+          <label htmlFor="endDate">End Date:</label>
+          <DatePicker
+            id="endDate"
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            showTimeSelect
+            dateFormat="Pp"
+          />
+        </div>
+        <button className="btn" type="submit">Create Event</button>
+      </form>
+    </div>
   );
 }
 
