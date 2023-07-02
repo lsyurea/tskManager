@@ -7,11 +7,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 5px #ccc;
-    background-color: rgb(74, 74, 90);
+    background-color: rgba(74, 74, 90, 0.5);
 }
 
 .box {
-    min-width: 50%
+    min-width: 50%;
+    background-color: rgb(48, 69, 68);
 }
 
 .todo-list {

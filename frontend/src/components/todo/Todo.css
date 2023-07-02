@@ -1,5 +1,5 @@
 .todo {
-    background-color: rgb(132, 175, 175);
+    background-color: rgba(132, 175, 175, 0.7);
     display: flex;
     justify-content: space-between;
     border-color: black;
