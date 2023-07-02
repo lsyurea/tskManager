@@ -61,12 +61,12 @@ function SignUp() {
         <div className="wrapper-signup">
             <a href='/'><span className="icon-close"><ion-icon name="close"></ion-icon></span></a>
             <div className="form-box login">
-                <h2>Signup</h2>
+                <h2>Sign up</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-box">
                         <span className="icon"><ion-icon name="accessibility"></ion-icon></span>
                         <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required/>
-                        <label htmlFor="username">Username:</label>
+                        <label htmlFor="username">Username</label>
                     </div>
                     <div className="input-box">
                         <span className="icon"><ion-icon name="mail"></ion-icon></span>
