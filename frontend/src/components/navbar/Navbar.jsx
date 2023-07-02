@@ -1,6 +1,6 @@
 import './Navbar.css'
 
-function Navbar({ token }) {
+function Navbar() {
 
     const loginPopup = () => {
         window.location.href = '/login'
@@ -19,8 +19,8 @@ function Navbar({ token }) {
                 <a href="/">Home</a>
                 <a href="/calendar">Calendar</a>
                 <a href="/dashboard">Todo</a>
-                {/* <a href="#">Contact</a> */}
-                {token ? <button className="btnLogin-popup" onClick={logout}>Logout</button> : <button className="btnLogin-popup" onClick={loginPopup}>Login</button>}
+                <a href="#">Modules</a>
+                {sessionStorage.getItem('token') ? <button className="btnLogin-popup" onClick={logout}>Logout</button> : <button className="btnLogin-popup" onClick={loginPopup}>Login</button>}
                 
             </nav>
         </div>

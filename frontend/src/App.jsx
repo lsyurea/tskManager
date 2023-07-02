@@ -61,7 +61,7 @@ function App() {
   return (
     <>
       <div className="window">
-        <Navbar token={token}/>
+        <Navbar/>
         {/* <h1>tskManager</h1> */}
 
         <RouterProvider className="card" router={router} />
