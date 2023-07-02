@@ -5,6 +5,7 @@ import DashBoard from './components/dashboard/Dashboard'
 import ErrorPage from './components/ErrorPage'
 import Navbar from './components/navbar/Navbar'
 import Home from './components/home/Home'
+import Module from './components/module/Module'
 import MyCalendar from './components/calendar/MyCalendar'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import ChangePassword from './components/changepassword/ChangePassword'
@@ -53,6 +54,10 @@ function App() {
       element: <SignUp />,
     },
     {
+      path: '/module',
+      element: <Module />,
+    },
+    {
       path: '*',
       element: <ErrorPage />,
     }
@@ -62,13 +67,10 @@ function App() {
     <>
       <div className="window">
         <Navbar/>
-        {/* <h1>tskManager</h1> */}
 
         <RouterProvider className="card" router={router} />
 
-        {/* <p className="info">
-          ur one and only task manager :)
-        </p> */}
+      
       </div>
     </>
   )
