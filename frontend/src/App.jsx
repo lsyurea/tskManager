@@ -4,6 +4,7 @@ import SignUp from './components/signup/SignUp'
 import DashBoard from './components/dashboard/Dashboard'
 import ErrorPage from './components/ErrorPage'
 import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
 import Module from './components/module/Module'
 import MyCalendar from './components/calendar/MyCalendar'
@@ -70,7 +71,7 @@ function App() {
 
         <RouterProvider className="card" router={router} />
 
-      
+        <Footer/>
       </div>
     </>
   )
