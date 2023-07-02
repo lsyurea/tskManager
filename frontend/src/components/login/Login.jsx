@@ -36,7 +36,7 @@ function Login({ setToken }) {
             setEmail('');
             setPassword('');
         } catch (error) {
-        alert(error)
+            console.log(error)
         }
     }
 

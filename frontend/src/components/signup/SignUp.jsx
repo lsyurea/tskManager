@@ -52,7 +52,7 @@ function SignUp() {
             setEmail('')
         }
         catch (error) {
-            alert(error)
+            console.log(error)
         }
        
     }

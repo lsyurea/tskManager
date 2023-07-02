@@ -31,8 +31,7 @@ function TodoList({token}) {
         .eq('user_id', user().id)
 
         if (error) {
-            alert(error)
-            return
+            console.log(error)
         }
 
         // set todos to data from database
@@ -50,8 +49,7 @@ function TodoList({token}) {
         .match({ id: id })
 
         if (error) {
-            alert(error)
-            return
+            console.log(error)
         } 
         fetchTodo()
     }
@@ -71,7 +69,7 @@ function TodoList({token}) {
         .insert({ user_id: user().id, task: newTodo })
 
         if (error) {
-            alert(error)
+            console.log(error)
         } else {
             setNewTodo('')
             fetchTodo()
@@ -86,9 +84,9 @@ function TodoList({token}) {
     // update
     const updateTodo = async (id, task) => {
         if (!user()) return
-        const { data, error } = await supabase.from('todos').update({ task: task }).match({ id: id })
+        const { error } = await supabase.from('todos').update({ task: task }).match({ id: id })
         if (error) {
-            alert(error)
+            console.log(error)
         } else {
             fetchTodo()
         }
