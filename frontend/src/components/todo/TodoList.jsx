@@ -3,7 +3,7 @@ import { supabase } from '../../helper/SupabaseClient'
 import Todo from './Todo'
 import './TodoList.css'
 
-function TodoList({token}) {
+function TodoList() {
     const[todos, setTodos] = useState([])
     const[newTodo, setNewTodo] = useState('')
 

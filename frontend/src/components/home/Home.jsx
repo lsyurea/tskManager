@@ -1,4 +1,6 @@
-function Home({ token }) {
+function Home() {
+    const token = JSON.parse(sessionStorage.getItem('token'))
+    console.log(token)
     if (!token) return (
         <div className="home">
             <h1>Please sign in</h1>
@@ -6,7 +8,7 @@ function Home({ token }) {
     ) 
     return (
         <div className="home">
-            <h1>Welcome back, {token.user.email}</h1>
+            <h1>Welcome back, {token.user.user_metadata.username}</h1>
         </div>
     )
 }

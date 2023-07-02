@@ -1,8 +1,8 @@
 import './Dashboard.css'
 import TodoList from '../todo/TodoList'
 
-function Dashboard({token}) {
-  if (!token) {
+function Dashboard() {
+  if (!sessionStorage.getItem('token')) {
     return (
       <div className="wrap">
         <h1>Please login first</h1>
@@ -13,7 +13,7 @@ function Dashboard({token}) {
     <div className="wrap">
       <h1>Dashboard</h1>
       <p>Welcome to the dashboard!</p>
-      <TodoList token={token}/>
+      <TodoList/>
 
     </div>
   );

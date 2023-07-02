@@ -21,7 +21,7 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-function MyCalendar( {token} ) {
+function MyCalendar() {
   // authentication
   const user = () => {
     const curToken = JSON.parse(sessionStorage.getItem('token'));

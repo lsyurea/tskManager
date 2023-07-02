@@ -43,11 +43,11 @@ function App() {
     },
     {
       path: '/dashboard',
-      element: <DashBoard token={token}/>,
+      element: <DashBoard/>,
     },
     {
       path: '/calendar',
-      element: <MyCalendar token={token}/>,
+      element: <MyCalendar/>,
     },
     {
       path: '/signup',
