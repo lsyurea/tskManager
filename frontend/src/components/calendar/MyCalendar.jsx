@@ -70,7 +70,7 @@ function MyCalendar() {
     fetchEvent();
   });
 
-  if (token == null) {
+  if (user() == null) {
     return (
     <>
       <div>
