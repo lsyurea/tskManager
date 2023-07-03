@@ -1,5 +1,5 @@
 .cal {
-    background-color: rgb(119, 86, 86);
+    /* background-color: rgb(119, 86, 86); */
     /* border-width: 5 px;
     border-color: rgb(40, 35, 35); */
     /* position: fixed;
@@ -14,4 +14,8 @@
     /* min-height: 500px;
     height: 500px;
     margin: 50px; */
+}
+
+.rbc-today{
+    background-color: rgb(255, 255, 255, 0.3);
 }

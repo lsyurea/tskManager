@@ -1,4 +1,4 @@
-import "./MyCalendar.css";
+
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
@@ -8,6 +8,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState, useEffect } from "react";
 import { supabase } from '../../helper/SupabaseClient'
 import CreateEventForm from "./CreateEventForm";
+import "./MyCalendar.css";
 
 const locales = {
   "en-US": import("date-fns/locale/en-US"),
