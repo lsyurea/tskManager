@@ -11,6 +11,10 @@ function TodoList() {
     const user = () => {
         return JSON.parse(sessionStorage.getItem('token')).user;
     }
+     // keeps fetching the todos from the database
+    useEffect(() => {
+        fetchTodo()
+    })
 
     // crud operations
 
@@ -92,10 +96,7 @@ function TodoList() {
         }
     }
 
-    // keeps fetching the todos from the database
-    useEffect(() => {
-        fetchTodo()
-    })
+   
 
     if (!user()) {
         return (

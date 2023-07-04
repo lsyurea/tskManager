@@ -14,7 +14,7 @@ function Module() {
 
 
     return (
-        <div className='module'>
+        <div className='profile'>
             <h1>Welcome back, {user().user_metadata.username}</h1>
             {/* <h1>Modules</h1> */}
         </div>

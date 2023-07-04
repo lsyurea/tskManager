@@ -10,3 +10,13 @@
     display: flex;
     flex-direction: column;
 }
+
+.search-result-title {
+    text-align: left;
+    padding-left: 2rem;
+    cursor: pointer;
+}
+
+.search-result-title:hover {
+    background-color: rgb(255, 255, 255, 0.3);
+}
