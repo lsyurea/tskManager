@@ -47,7 +47,7 @@ function SearchDetails( {result, setModuleDetails} ) {
             <div className='des'>
                 <h3>Available in:</h3>
                 {info.semesterData.map((semester, index) => (
-                    <div key={index}>{semester.semester}</div>
+                    <div key={index}>Semester {semester.semester}</div>
                 ))}
             </div>
             <div className='des'>
@@ -68,9 +68,15 @@ function SearchDetails( {result, setModuleDetails} ) {
                     <div key={index}>For Semester {semester.semester}: {new Date(semester.examDate).toDateString()}</div>
                 ))}
             </div>
-
-            <div className="search-result-prerequisite">{result.prerequisite}</div>
-            <div className="search-result-preclusion">{result.preclusion}</div>
+            <div className='des'>
+                <h3>Prerequisite: </h3>
+                <div className="prerequisite">{info.prerequisite}</div>
+            </div>
+            <div className='des'>
+                <h3>Preclusion: </h3>
+                <div className="preclusion">{info.preclusion}</div>
+            </div>
+          
         </div>
 
     )
