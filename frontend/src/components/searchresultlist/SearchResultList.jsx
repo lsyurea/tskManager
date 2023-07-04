@@ -1,6 +1,6 @@
-import './SearchResultList.css';
 import SearchDetails from './SearchDetails';
 import { useState } from 'react';
+import './SearchResultList.css';
 
 function SearchResultList({ results }) {
     const [moduleDetails, setModuleDetails] = useState(null);

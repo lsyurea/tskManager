@@ -45,6 +45,10 @@ function SearchDetails( {result, setModuleDetails} ) {
                 <div className="result-description">{info.description}</div>
             </div>
             <div className='des'>
+                <h3>Faculty:</h3>
+                <div>{info.faculty}, {info.department}</div>
+            </div>
+            <div className='des'>
                 <h3>Available in:</h3>
                 {info.semesterData.map((semester, index) => (
                     <div key={index}>Semester {semester.semester}</div>
