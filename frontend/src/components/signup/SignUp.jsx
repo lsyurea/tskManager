@@ -52,6 +52,7 @@ function SignUp() {
         // email validation only once
         if (checkEmailExists(email)) {
             alert('Email already exists!')
+            return
         }
 
         try {
