@@ -28,12 +28,20 @@ function SearchDetails( {result, setModuleDetails} ) {
     if (!info) {
         fetchModule().then((info) => {
             setInfo(info)
-            console.log(info)
         })
     }
       
     const handleBack = () => {
-        setModuleDetails(null);
+       setModuleDetails(null);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (sessionStorage.getItem('token') === null) {
+            alert('Please login to add module to your list!')
+        } else {
+            alert('Module added to your list!')
+        }
     }
 
     return (info && 
@@ -50,7 +58,7 @@ function SearchDetails( {result, setModuleDetails} ) {
             </div>
             <div className='des'>
                 <h3>Available in:</h3>
-                {info.semesterData.map((semester, index) => (
+                {info.semesterData && info.semesterData.map((semester, index) => (
                     <div key={index}>Semester {semester.semester}</div>
                 ))}
             </div>
@@ -68,7 +76,7 @@ function SearchDetails( {result, setModuleDetails} ) {
             </div>
             <div className='des'>
                 <h3>Finals Exam Dates: </h3>
-                {info.semesterData.map((semester, index) => (
+                {info.semesterData && info.semesterData.map((semester, index) => (
                     <div key={index}>For Semester {semester.semester}: {new Date(semester.examDate).toDateString()}</div>
                 ))}
             </div>
@@ -80,6 +88,8 @@ function SearchDetails( {result, setModuleDetails} ) {
                 <h3>Preclusion: </h3>
                 <div className="preclusion">{info.preclusion}</div>
             </div>
+
+            <button onClick={handleSubmit} className='des'>Add to profile</button>
           
         </div>
 
