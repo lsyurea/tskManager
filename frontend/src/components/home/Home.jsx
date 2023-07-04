@@ -1,14 +1,21 @@
+import './Home.css';
+import SearchBar from '../searchbar/Searchbar'
+
 function Home() {
-    const token = JSON.parse(sessionStorage.getItem('token'))
-    console.log(token)
-    if (!token) return (
-        <div className="home">
-            <h1>Please sign in</h1>
-        </div>
-    ) 
+
     return (
         <div className="home">
-            <h1>Welcome back, {token.user.user_metadata.username}</h1>
+
+            <div className="search-bar-container">
+               <SearchBar />
+            </div>
+            <div className="container">
+                <div className="card">
+                    <h1>Module Details</h1>
+                </div>
+            </div>
+
+            
         </div>
     )
 }
