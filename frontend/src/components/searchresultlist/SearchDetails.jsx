@@ -41,6 +41,7 @@ function SearchDetails( {result, setModuleDetails} ) {
         e.preventDefault();
         if (sessionStorage.getItem('token') === null) {
             alert('Please login to add module to your list!')
+            navigate('/login')
         } else {
             alert('Module added to your list!')
             // Todo: add module to user's list
