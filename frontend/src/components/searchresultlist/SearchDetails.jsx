@@ -1,5 +1,6 @@
 import './SearchDetails.css'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const apiUrl = 'https://api.nusmods.com/v2/';
 const currentYear = new Date().getFullYear();
@@ -10,7 +11,8 @@ const stringYear = `${currentYear}-${currentYear + 1}`;
 
 function SearchDetails( {result, setModuleDetails} ) {
     const [info, setInfo] = useState(null);
-    
+    const navigate = useNavigate();
+
     async function fetchModule() {
         try {
           const response = await fetch(`${apiUrl}${stringYear}/modules/${result.moduleCode}.json`);
@@ -41,6 +43,10 @@ function SearchDetails( {result, setModuleDetails} ) {
             alert('Please login to add module to your list!')
         } else {
             alert('Module added to your list!')
+            // Todo: add module to user's list
+
+            // Navigate to user's list
+            navigate('/module')
         }
     }
 

@@ -1,0 +1,25 @@
+.profile {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-card {
+    width:100%;
+    height:100%;
+    display:flex;
+    border-radius: 10px;
+    /* box-shadow: 0 0 8px #ddd; */
+
+}   
+
+.profile-card-body {
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    margin: 2rem;
+    border-radius: 10px;
+    /* box-shadow: 0 0 8px #ddd; */
+    background-color: rgb(255, 255, 255, 0.3);
+}
