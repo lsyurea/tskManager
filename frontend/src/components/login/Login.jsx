@@ -3,11 +3,18 @@ import { useEffect } from 'react';
 import { useState } from 'react'
 import { supabase } from "../../helper/SupabaseClient"
 import { useNavigate } from 'react-router-dom'
+import Dashboard from '../dashboard/Dashboard';
 
 function Login({ setToken }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+     // to prevent manual change to login
+     if (sessionStorage.getItem('token')) {
+        navigate('/dashboard')
+        return <Dashboard />
+    }
 
     async function handleLogin(event) {
         try {

@@ -5,15 +5,14 @@
     /* position: fixed;
     top: 10rem;
     left: 10rem; */
-    height: 500px;
+    height: 600px;
     width: 100%;
     min-height: 500px;
 }
 
 .cal-in {
-    /* min-height: 500px;
-    height: 500px;
-    margin: 50px; */
+    height: 100%;
+    width: 100%;
 }
 
 .rbc-today{

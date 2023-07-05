@@ -11,8 +11,8 @@ function Dashboard() {
   }
   return (
     <div className="wrap">
-      <h1>Dashboard</h1>
-      <p>Welcome to the dashboard!</p>
+      {/* <h1>Dashboard</h1>
+      <p>Welcome to the dashboard!</p> */}
       <TodoList/>
 
     </div>
