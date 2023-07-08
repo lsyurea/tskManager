@@ -66,9 +66,47 @@
     font-weight: 500;
     margin-left: 40px;
     transition: .5s;
+    text-align: center;
 }
 
 .navigation .btnLogin-popup:hover {
     background: #fff;
     color: #162938;
+}
+
+.nav-btn {
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    opacity: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+   .nav-btn {
+    visibility: visible;
+    opacity: 1;
+   }
+
+   nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: #162938;
+    transition: 1s;
+    transform: translateY(-100vh);
+   }
+
+   .responsive_nav{
+    transform: none;
+   }
+
 }
