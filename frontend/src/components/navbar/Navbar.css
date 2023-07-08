@@ -112,4 +112,9 @@
     transform: none;
    }
 
+   .nav-close-btn {
+    position: relative;
+    transform: translateX(120px);
+   }
+
 }
