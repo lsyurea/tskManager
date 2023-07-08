@@ -21,6 +21,9 @@ function Module() {
                     <div className="profile-card-body-item">
                         <h3>Current task</h3>
                     </div>
+
+                    <div><h3>Miscellaneous task from Todo</h3></div>
+                    <div><h3>Scheduled task from Calendar</h3></div>
                 </div>
                 <div className="profile-card-body">
                     <div className="profile-card-body-item">

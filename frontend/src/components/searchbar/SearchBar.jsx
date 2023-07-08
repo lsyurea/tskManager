@@ -27,7 +27,7 @@ function SearchBar({ setResults }) {
     const [prefix, setPrefix] = useState('')
     const [modules, setModules] = useState([])
     const [filteredModules, setFilteredModules] = useState([])
-    if (modules.length === 0) {
+    if (modules == null || modules.length === 0) {
         fetchModules().then((modules) => {
             setModules(modules)
             setFilteredModules(modules)

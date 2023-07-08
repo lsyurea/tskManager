@@ -67,7 +67,7 @@ function App() {
   return (
     <>
       <div className="window">
-        <Navbar/>
+        <Navbar className="bar" />
 
         <RouterProvider className="card" router={router} />
 
