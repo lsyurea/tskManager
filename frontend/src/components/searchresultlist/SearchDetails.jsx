@@ -1,6 +1,7 @@
 import './SearchDetails.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { addModule } from '../../services/apiService';
 
 const apiUrl = 'https://api.nusmods.com/v2/';
 const currentYear = new Date().getFullYear();
@@ -45,7 +46,7 @@ function SearchDetails( {result, setModuleDetails} ) {
         } else {
             alert('Module added to your list!')
             // Todo: add module to user's list
-
+            addModule(result.moduleCode)
             // Navigate to user's list
             navigate('/module')
         }

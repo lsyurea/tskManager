@@ -4,7 +4,7 @@ import { supabase } from "./SupabaseClient"
 // fetch based on user id
 const user = () => JSON.parse(sessionStorage.getItem('token')).user;
 
-const fetchTodo = async (force) => {
+export const fetchTodo = async (force) => {
     if (!user()) {console.log('User not login'); return;}
     if (sessionStorage.getItem('todos') === null || force) {
         const { data, error } = await supabase
@@ -22,7 +22,7 @@ const fetchTodo = async (force) => {
 }
 
 // delete
-const deleteTodo = async (id) => {
+export const deleteTodo = async (id) => {
     if (!user()) return
 
     const { error } = await supabase
@@ -37,7 +37,7 @@ const deleteTodo = async (id) => {
 }
 
 // create
-const addTodo = async (newTodo) => {
+export const addTodo = async (newTodo) => {
     if (!user()) {console.log('User not login'); return;}
 
     // if newTodo is empty, don't add it
@@ -56,7 +56,7 @@ const addTodo = async (newTodo) => {
 }
 
 // update
-const updateTodo = async (id, task) => {
+export const updateTodo = async (id, task) => {
     if (!user()) return
     const { error } = await supabase.from('todos').update({ task: task }).match({ id: id })
     if (error) {
@@ -70,5 +70,37 @@ const updateTodo = async (id, task) => {
 
 
 // set modules api
+export const fetchModule = async () => {
+    console.log("fetching modules")
+    if (!user()) {console.log('User not login'); return;}
 
-export default { deleteTodo, updateTodo, fetchTodo, addTodo, }
+   
+    const { data, error } = await supabase
+    .from('modules')
+    .select('*')
+    .eq('user_id', user().id)
+    
+    if (error) {
+        console.log(error)
+    }
+    return data;
+}
+
+export const addModule = async (module) => {
+    console.log("adding module")
+    if (!user()) {console.log('User not login'); return;}
+
+    // if newTodo is empty, don't add it
+    if (module.trim() === '') return;
+    // add newTodo to database
+
+    const { error } = await supabase
+    .from('modules')
+    .insert({ user_id: user().id, module_name: module })
+
+    if (error) {
+        console.log(error)
+    } else {
+        fetchModule()
+    }
+}

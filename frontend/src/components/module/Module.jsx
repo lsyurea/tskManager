@@ -1,6 +1,18 @@
 import './Module.css'
+import { fetchModule } from '../../services/apiService'
+import { useState, useEffect } from 'react'
 
 function Module() {
+    const [modules, setModules] = useState([]);
+    
+    useEffect(() => {
+        fetchModule().then((modules) => {
+            setModules(modules);
+        }
+        );
+    }, []);
+
+
     const user = () => {
         const token = JSON.parse(sessionStorage.getItem('token'));
         return token ? token.user : token;
@@ -11,6 +23,7 @@ function Module() {
         <h1>Please login first</h1>
     </div>
     </>);
+
 
 
     return (
@@ -29,6 +42,11 @@ function Module() {
                     <div className="profile-card-body-item">
                         <h3>Modules taking</h3>
                     </div>
+                    {modules.map((module) => (
+                            <div key={module.id}>
+                                <h4>{module.module_name}</h4>
+                            </div>
+                        ))}
                 </div>
                 {/* <div className="profile-card-body"></div> */}
 
