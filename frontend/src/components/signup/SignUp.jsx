@@ -1,6 +1,6 @@
 import './SignUp.css';
 import { useState, useEffect } from 'react';
-import { supabase } from "../../helper/SupabaseClient"
+import { supabase } from "../../services/SupabaseClient"
 
 async function checkEmailExists(email) {
     try {

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { supabase } from '../../helper/SupabaseClient'
+import { supabase } from '../../services/SupabaseClient'
 
 function CreateEventForm( {extraFunction}) {
   const [title, setTitle] = useState("");

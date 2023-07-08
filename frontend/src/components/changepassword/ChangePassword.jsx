@@ -1,6 +1,6 @@
 import './ChangePassword.css'
 import { useState, useEffect } from 'react';
-import { supabase } from "../../helper/SupabaseClient"
+import { supabase } from "../../services/SupabaseClient"
 
 function ChangePassword() {
     const [email, setEmail] = useState('');

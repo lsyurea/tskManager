@@ -1,7 +1,7 @@
 import './Login.css'
 import { useEffect } from 'react'; 
 import { useState } from 'react'
-import { supabase } from "../../helper/SupabaseClient"
+import { supabase } from "../../services/SupabaseClient"
 import { useNavigate } from 'react-router-dom'
 import Dashboard from '../dashboard/Dashboard';
 

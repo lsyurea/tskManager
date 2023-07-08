@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../../helper/SupabaseClient'
+import { supabase } from '../../services/SupabaseClient'
 import Todo from './Todo'
 import './TodoList.css'
 
@@ -15,16 +15,6 @@ function TodoList() {
     useEffect(() => {
         fetchTodo()
     })
-
-    // crud operations
-
-    // read
-
-    // currently public access
-
-    // const headers = {
-    //     'Authorization': `Bearer ${token.session.access_token}`,
-    // };
 
     // fetch based on user id
     const fetchTodo = async () => {

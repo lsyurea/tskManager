@@ -1,6 +1,7 @@
 .profile {
     width: 100%;
     height: 100%;
+    
 }
 
 .profile-card {
@@ -20,6 +21,10 @@
     justify-content:space-between;
     margin: 2rem;
     border-radius: 10px;
-    /* box-shadow: 0 0 8px #ddd; */
-    background-color: rgb(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px #ddd;
+    /* background-color: rgb(255, 255, 255, 0.2); */
+}
+
+.profile-card-body-item {
+    background-color: rgb(255, 255, 255, 0.2);
 }

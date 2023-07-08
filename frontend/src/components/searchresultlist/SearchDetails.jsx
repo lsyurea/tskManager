@@ -73,14 +73,14 @@ function SearchDetails( {result, setModuleDetails} ) {
                 <h3>Number of Modular Credit: </h3>
                 <div className="mc">{info.moduleCredit} MCs</div>
             </div>
-            <div className='des'>
+            {info.workload && <div className='des'>
                 <h3>Workload per week: </h3>
                 <div>Lectures: {info.workload[0]}h</div>
                 <div>Tutorials: {info.workload[1]}h</div>
                 <div>Lab: {info.workload[2]}h</div>
                 <div>Project Work: {info.workload[3]}h</div>
                 <div>Preparation for class: {info.workload[4]}h</div>
-            </div>
+            </div>}
             <div className='des'>
                 <h3>Finals Exam Dates: </h3>
                 {info.semesterData && info.semesterData.map((semester, index) => (
