@@ -44,7 +44,6 @@ function SearchDetails( {result, setModuleDetails} ) {
             alert('Please login to add module to your list!')
             navigate('/login')
         } else {
-            alert('Module added to your list!')
             // Todo: add module to user's list
             addModule(result.moduleCode)
             // Navigate to user's list

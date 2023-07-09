@@ -69,11 +69,10 @@ export const updateTodo = async (id, task) => {
 // set calendar api
 
 
+
 // set modules api
 export const fetchModule = async () => {
-    console.log("fetching modules")
     if (!user()) {console.log('User not login'); return;}
-
    
     const { data, error } = await supabase
     .from('modules')
@@ -87,11 +86,23 @@ export const fetchModule = async () => {
 }
 
 export const addModule = async (module) => {
-    console.log("adding module")
     if (!user()) {console.log('User not login'); return;}
 
     // if newTodo is empty, don't add it
     if (module.trim() === '') return;
+
+    // if module code is already in database, don't add it
+    const { data } = await supabase
+    .from('modules')
+    .select('*')
+    .eq('user_id', user().id)
+    .eq('module_name', module)
+
+    if (data.length !== 0) {
+        alert('Module already exists')
+        return
+    }
+
     // add newTodo to database
 
     const { error } = await supabase
@@ -100,7 +111,8 @@ export const addModule = async (module) => {
 
     if (error) {
         console.log(error)
-    } else {
-        fetchModule()
-    }
+    } 
+    alert('Module added to your list!')
 }
+
+

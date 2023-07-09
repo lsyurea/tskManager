@@ -5,6 +5,7 @@ import './Home.css';
 
 function Home() {
     const [results, setResults] = useState([])
+    
     return (
         <div className="home">
             <h1>Module Details</h1>

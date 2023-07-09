@@ -1,16 +1,18 @@
 import './Module.css'
 import { fetchModule } from '../../services/apiService'
 import { useState, useEffect } from 'react'
+// import { SearchDetails } from '../searchresultlist/SearchDetails'
 
 function Module() {
     const [modules, setModules] = useState([]);
+    // const [moduleDetails, setModuleDetails] = useState(null);
     
     useEffect(() => {
         fetchModule().then((modules) => {
             setModules(modules);
         }
         );
-    }, []);
+    });
 
 
     const user = () => {
