@@ -101,7 +101,9 @@ function TodoList() {
                 <button type="submit">Add Todo</button>
             </form>
             <div className="todo-list">
-                {todos.map((todo) => (
+                {todos.sort((a, b) => {
+                    return a.id > b.id ? -1 : 1;
+                }).map((todo) => (
                     <Todo key={todo.id} todo={todo} onDelete={deleteTodo} onUpdate={updateTodo}/>
                 ))}
                 
