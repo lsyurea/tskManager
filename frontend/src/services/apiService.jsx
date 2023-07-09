@@ -4,27 +4,25 @@ import { supabase } from "./SupabaseClient"
 // fetch based on user id
 const user = () => JSON.parse(sessionStorage.getItem('token')).user;
 
-export const fetchTodo = async (force) => {
+export const fetchTodo = async () => {
     if (!user()) {console.log('User not login'); return;}
-    if (sessionStorage.getItem('todos') === null || force) {
-        const { data, error } = await supabase
-        .from('todos')
-        .select('*')
-        .eq('user_id', user().id)
-    
-        if (error) {
-            console.log(error)
-        }
-        sessionStorage.setItem('todos', data)
-        return data;
+   
+    const { data, error } = await supabase
+    .from('todos')
+    .select('*')
+    .eq('user_id', user().id)
+
+    if (error) {
+        console.log(error)
     }
-    return sessionStorage.getItem('todos')
+    return data ? data.sort((a, b) => {
+        return a.id > b.id ? -1 : 1;
+    }) : [];
 }
 
 // delete
 export const deleteTodo = async (id) => {
     if (!user()) return
-
     const { error } = await supabase
     .from('todos')
     .delete()
@@ -33,7 +31,6 @@ export const deleteTodo = async (id) => {
     if (error) {
         console.log(error)
     } 
-    return fetchTodo(true)
 }
 
 // create
@@ -61,8 +58,6 @@ export const updateTodo = async (id, task) => {
     const { error } = await supabase.from('todos').update({ task: task }).match({ id: id })
     if (error) {
         console.log(error)
-    } else {
-        return fetchTodo()
     }
 }
 
@@ -72,8 +67,6 @@ export const updateTodo = async (id, task) => {
 
 // set modules api
 export const fetchModule = async () => {
-
-    console.log("fetchModule")
     if (!user()) {console.log('User not login'); return;}
    
     const { data, error } = await supabase

@@ -1,18 +1,22 @@
 import './Module.css'
-import { fetchModule } from '../../services/apiService'
+import { fetchModule, fetchTodo } from '../../services/apiService'
 import { useState, useEffect } from 'react'
 import SearchDetails from '../searchresultlist/SearchDetails'
 
 function Module() {
     const [modules, setModules] = useState([]);
+    const [todos, setTodos] = useState([]);
     const [moduleDetails, setModuleDetails] = useState(null);
     
     useEffect(() => {
         fetchModule().then((modules) => {
             setModules(modules);
+        });
+        fetchTodo().then((todos) => {
+            setTodos(todos);
         }
         );
-    }, []);
+    }, [modules, todos]);
 
 
     const user = () => {
@@ -40,8 +44,22 @@ function Module() {
                         <h3>Current task</h3>
                     </div>
 
-                    <div><h3>Miscellaneous task from Todo</h3></div>
-                    <div><h3>Scheduled task from Calendar</h3></div>
+                    <div>
+                      <h3>Miscellaneous task from Todo</h3>
+                      {todos && todos.map((todo) => (
+                        <div key={todo.id} className="result">
+
+                            <div className="result-title">  
+                              {todo.task}
+                            </div>
+                        </div>
+                      ))}
+                    </div>
+
+
+                    <div>
+                      <h3>Scheduled task from Calendar</h3>
+                    </div>
                 </div>
                 <div className="profile-card-body">
                     <div className="profile-card-body-item">
