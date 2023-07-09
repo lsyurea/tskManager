@@ -18,6 +18,8 @@
     height:100%;
     display:flex;
     flex-direction:column;
+    max-height: 60vh;
+    overflow-y: auto;
     margin: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 8px #ddd;
@@ -27,4 +29,14 @@
 .profile-card-body-item {
     background-color: rgb(255, 255, 255, 0.2);
 
+}
+
+.result-title {
+    text-align: left;
+    padding-left: 2rem;
+    cursor: pointer;
+}
+
+.result-title:hover {
+    background-color: rgb(255, 255, 255, 0.3);
 }

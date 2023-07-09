@@ -1,34 +1,14 @@
 import './SearchBar.css'
 import { FaSearch } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
-
-const apiUrl = 'https://api.nusmods.com/v2/';
-const currentYear = new Date().getFullYear();
-// const currentSemester = new Date().getMonth() < 6 ? 1 : 2;
-const stringYear = `${currentYear}-${currentYear + 1}`;
-
-// Function to fetch all modules
-async function fetchModules() {
-  try {
-    const response = await fetch(`${apiUrl}${stringYear}/moduleList.json`);
-    if (!response.ok) {
-      throw new Error('Network response was not ok.');
-    }
-    const modules = await response.json();
-    return modules;
-  } catch (error) {
-    console.error('Error fetching modules:', error);
-    return null;
-  }
-}
-
+import { fetchAllNUSModules } from '../../services/apiService'
 
 function SearchBar({ setResults }) {
     const [prefix, setPrefix] = useState('')
     const [modules, setModules] = useState([])
     const [filteredModules, setFilteredModules] = useState([])
     if (modules == null || modules.length === 0) {
-        fetchModules().then((modules) => {
+        fetchAllNUSModules().then((modules) => {
             setModules(modules)
             setFilteredModules(modules)
         })

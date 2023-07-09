@@ -1,12 +1,7 @@
 import './SearchDetails.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addModule } from '../../services/apiService';
-
-const apiUrl = 'https://api.nusmods.com/v2/';
-const currentYear = new Date().getFullYear();
-// const currentSemester = new Date().getMonth() < 6 ? 1 : 2;
-const stringYear = `${currentYear}-${currentYear + 1}`;
+import { addModule, fetchNUSModule } from '../../services/apiService';
 
 // Function to fetch all modules
 
@@ -14,22 +9,9 @@ function SearchDetails( {result, setModuleDetails} ) {
     const [info, setInfo] = useState(null);
     const navigate = useNavigate();
 
-    async function fetchModule() {
-        try {
-          const response = await fetch(`${apiUrl}${stringYear}/modules/${result.moduleCode}.json`);
-          if (!response.ok) {
-            throw new Error('Network response was not ok.');
-          }
-          const modules = await response.json();
-          return modules;
-        } catch (error) {
-          console.error('Error fetching modules:', error);
-          return null;
-        }
-    }
 
     if (!info) {
-        fetchModule().then((info) => {
+        fetchNUSModule(result.moduleCode).then((info) => {
             setInfo(info)
         })
     }

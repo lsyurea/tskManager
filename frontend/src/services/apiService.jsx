@@ -72,6 +72,8 @@ export const updateTodo = async (id, task) => {
 
 // set modules api
 export const fetchModule = async () => {
+
+    console.log("fetchModule")
     if (!user()) {console.log('User not login'); return;}
    
     const { data, error } = await supabase
@@ -84,6 +86,20 @@ export const fetchModule = async () => {
     }
     return data;
 }
+
+// export const fetchModuleCode = async (moduleCode) => {
+//     if (!user()) {console.log('User not login'); return;}
+//     const { data, error } = await supabase
+//     .from('modules')
+//     .select('*')
+//     .eq('user_id', user().id)
+//     .eq('module_name', moduleCode)
+
+//     if (error) {
+//         console.log(error)
+//     }
+//     return data;
+// }
 
 export const addModule = async (module) => {
     if (!user()) {console.log('User not login'); return;}
@@ -115,4 +131,53 @@ export const addModule = async (module) => {
     alert('Module added to your list!')
 }
 
+export const deleteModule = async (module) => {
+    if (!user()) return
 
+    const { error } = await supabase
+    .from('modules')
+    .delete()
+    .match({ module_name: module, user_id: user().id })
+
+    if (error) {
+        console.log(error)
+    } 
+}
+
+// do not need update module because user cannot change module name
+
+
+// NUS mods api
+
+const apiUrl = 'https://api.nusmods.com/v2/';
+const currentYear = new Date().getFullYear();
+// const currentSemester = new Date().getMonth() < 6 ? 1 : 2;
+const stringYear = `${currentYear}-${currentYear + 1}`;
+
+export const fetchNUSModule = async (moduleCode) => {
+    try {
+      const response = await fetch(`${apiUrl}${stringYear}/modules/${moduleCode}.json`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+      const modules = await response.json();
+      return modules;
+    } catch (error) {
+      console.error('Error fetching modules:', error);
+      return null;
+    }
+}
+
+export const fetchAllNUSModules = async() => {
+    try {
+      const response = await fetch(`${apiUrl}${stringYear}/moduleList.json`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+      const modules = await response.json();
+      return modules;
+    } catch (error) {
+      console.error('Error fetching modules:', error);
+      return null;
+    }
+  }

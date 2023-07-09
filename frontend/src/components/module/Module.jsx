@@ -1,18 +1,18 @@
 import './Module.css'
 import { fetchModule } from '../../services/apiService'
 import { useState, useEffect } from 'react'
-// import { SearchDetails } from '../searchresultlist/SearchDetails'
+import SearchDetails from '../searchresultlist/SearchDetails'
 
 function Module() {
     const [modules, setModules] = useState([]);
-    // const [moduleDetails, setModuleDetails] = useState(null);
+    const [moduleDetails, setModuleDetails] = useState(null);
     
     useEffect(() => {
         fetchModule().then((modules) => {
             setModules(modules);
         }
         );
-    });
+    }, []);
 
 
     const user = () => {
@@ -26,6 +26,9 @@ function Module() {
     </div>
     </>);
 
+    const handleSubmit = (module) => () => {
+        setModuleDetails({moduleCode: module.module_name});
+    }
 
 
     return (
@@ -44,11 +47,14 @@ function Module() {
                     <div className="profile-card-body-item">
                         <h3>Modules taking</h3>
                     </div>
-                    {modules.map((module) => (
-                            <div key={module.id}>
-                                <h4>{module.module_name}</h4>
+                    {!moduleDetails && modules.map((module) => (
+                            <div key={module.id} className="result">
+                                <div className="result-title" onClick={handleSubmit(module)}>
+                                  {module.module_name}
+                                </div>
                             </div>
                         ))}
+                        {moduleDetails && <SearchDetails result = {moduleDetails} setModuleDetails={setModuleDetails}/>}
                 </div>
                 {/* <div className="profile-card-body"></div> */}
 
