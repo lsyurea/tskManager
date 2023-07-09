@@ -142,6 +142,7 @@ export const deleteModule = async (module) => {
     if (error) {
         console.log(error)
     } 
+    alert('Module deleted from your list!')
 }
 
 // do not need update module because user cannot change module name

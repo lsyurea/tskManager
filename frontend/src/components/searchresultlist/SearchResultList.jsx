@@ -16,7 +16,7 @@ function SearchResultList({ results }) {
                     <div onClick={handleSubmit(result)} className="search-result-title">{result.moduleCode} : {result.title}</div>
                 </div>
             ))}
-            {moduleDetails && <SearchDetails result = {moduleDetails} setModuleDetails={setModuleDetails}/>}
+            {moduleDetails && <SearchDetails result = {moduleDetails} setModuleDetails={setModuleDetails} toAdd={true}/>}
         </div>       
     )
 }

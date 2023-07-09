@@ -14,7 +14,7 @@ function TodoList() {
      // keeps fetching the todos from the database
     useEffect(() => {
         fetchTodo()
-    })
+    }, [])
 
     // fetch based on user id
     const fetchTodo = async () => {

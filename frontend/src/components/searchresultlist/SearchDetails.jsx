@@ -1,11 +1,12 @@
 import './SearchDetails.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addModule, fetchNUSModule } from '../../services/apiService';
+import { addModule, fetchNUSModule, deleteModule } from '../../services/apiService';
+
 
 // Function to fetch all modules
 
-function SearchDetails( {result, setModuleDetails} ) {
+function SearchDetails( {result, setModuleDetails, toAdd} ) {
     const [info, setInfo] = useState(null);
     const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ function SearchDetails( {result, setModuleDetails} ) {
        setModuleDetails(null);
     }
 
-    const handleSubmit = (e) => {
+    const handleAdd = (e) => {
         e.preventDefault();
         if (sessionStorage.getItem('token') === null) {
             alert('Please login to add module to your list!')
@@ -31,6 +32,12 @@ function SearchDetails( {result, setModuleDetails} ) {
             // Navigate to user's list
             navigate('/module')
         }
+    }
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        deleteModule(result.moduleCode)
+        navigate('/module')
     }
 
     return (info && 
@@ -78,7 +85,8 @@ function SearchDetails( {result, setModuleDetails} ) {
                 <div className="preclusion">{info.preclusion}</div>
             </div>
 
-            <button onClick={handleSubmit} className='des'>Add to profile</button>
+            {toAdd && <button onClick={handleAdd} className='des'>Add to profile</button>}
+            {!toAdd && <button onClick={handleDelete} className='des'>Delete from profile</button>}
           
         </div>
 

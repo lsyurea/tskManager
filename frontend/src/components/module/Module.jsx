@@ -54,7 +54,7 @@ function Module() {
                                 </div>
                             </div>
                         ))}
-                        {moduleDetails && <SearchDetails result = {moduleDetails} setModuleDetails={setModuleDetails}/>}
+                        {moduleDetails && <SearchDetails result = {moduleDetails} setModuleDetails={setModuleDetails} toAdd={false}/>}
                 </div>
                 {/* <div className="profile-card-body"></div> */}
 
