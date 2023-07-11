@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Todo from './Todo'
-import { deleteTodo, updateTodo, addTodo } from '../../services/apiService'
+import { deleteTodo, updateTodo, addTodo, deleteAllTodo } from '../../services/apiService'
 import { useLocation } from 'react-router-dom'
 import './TodoList.css'
 
@@ -38,6 +38,16 @@ function TodoList() {
         setNewTodo('');
     }
 
+    const handleDeleteAll = async (e) => {
+        if (!user()) return
+        e.preventDefault();
+        
+        // delete all todos from database
+        deleteAllTodo();
+        setTodos([]);
+
+    }
+
     // to update the newTodo state
     const update = (e) => {
         setNewTodo(e.target.value);
@@ -61,6 +71,7 @@ function TodoList() {
                 ))}
                 
             </div>
+            <button onClick={handleDeleteAll}>Clear all</button>
         </div>
     );
 }

@@ -34,6 +34,22 @@ export const deleteTodo = async (id) => {
     }
 }
 
+// delete all
+export const deleteAllTodo = async () => {
+    if (!user()) return
+    const { error } = await supabase
+    .from('todos')
+    .delete()
+    .match({ user_id: user().id })
+
+    if (error) {
+        console.log(error)
+    } else {
+        // need to update session storage
+        await TodoStorageUpdate();
+    }
+}
+
 // create
 export const addTodo = async (newTodo) => {
     if (!user()) {console.log('User not login'); return;}
