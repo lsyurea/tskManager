@@ -6,8 +6,8 @@ import startOfWeek from "date-fns/startOfWeek";
 import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState, useEffect } from "react";
-import { supabase } from '../../services/SupabaseClient'
 import CreateEventForm from "./CreateEventForm";
+import { fetchCalendarEvent } from "../../services/apiService";
 import "./MyCalendar.css";
 
 const locales = {
@@ -41,36 +41,14 @@ function MyCalendar() {
     setShowForm(true);
   }
 
-  // fetch events from database
-  const fetchEvent = async () => {
-    if (!user()) return
-    const {data: events, error} = await supabase
-    .from('events')
-    .select('*')
-    .eq('user_id', user().id)
-
-    if (error) {
-      console.log(error);
-    } else {
-      const formattedEvents = events.map(event => (
-        {
-          title: event.title,
-          start: new Date(event.start),
-          end: new Date(event.end),
-        }
-      ))
-      setEvents(formattedEvents);
-    }
-  }
-
   // create event
   const handleEventCreate = () => { 
     setShowForm(false);
   }
 
   useEffect(() => {
-    fetchEvent();
-  });
+    setEvents(JSON.parse(sessionStorage.getItem('events')));
+  }, []);
 
   if (user() == null) {
     return (
@@ -100,7 +78,7 @@ function MyCalendar() {
         {!showForm && (
           <div>
             <div className="cal">
-              <Calendar className="cal-in" localizer={localizer} events={events} startAccessor="start" endAccessor="end" components={{
+              <Calendar className="cal-in" localizer={localizer} events={events? events : []} startAccessor="start" endAccessor="end" components={{
                 dateCellWrapper: renderDay,
               }}/>
             </div>

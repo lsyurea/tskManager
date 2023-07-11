@@ -3,11 +3,13 @@ import { FaSearch } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 import { fetchAllNUSModules } from '../../services/apiService'
 
+
 function SearchBar({ setResults }) {
     const [prefix, setPrefix] = useState('')
     const [modules, setModules] = useState([])
     const [filteredModules, setFilteredModules] = useState([])
     if (modules == null || modules.length === 0) {
+       
         fetchAllNUSModules().then((modules) => {
             setModules(modules)
             setFilteredModules(modules)

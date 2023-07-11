@@ -2,21 +2,18 @@ import './Module.css'
 import { fetchModule, fetchTodo } from '../../services/apiService'
 import { useState, useEffect } from 'react'
 import SearchDetails from '../searchresultlist/SearchDetails'
+import { useLocation } from 'react-router-dom'
 
 function Module() {
     const [modules, setModules] = useState([]);
     const [todos, setTodos] = useState([]);
     const [moduleDetails, setModuleDetails] = useState(null);
+    const location = useLocation();
     
     useEffect(() => {
-        fetchModule().then((modules) => {
-            setModules(modules);
-        });
-        fetchTodo().then((todos) => {
-            setTodos(todos);
-        }
-        );
-    }, [modules, todos]);
+        setModules(JSON.parse(sessionStorage.getItem('modules')));
+        setTodos(JSON.parse(sessionStorage.getItem('todos')));
+    }, [location]);
 
 
     const user = () => {
@@ -65,9 +62,9 @@ function Module() {
                     <div className="profile-card-body-item">
                         <h3>Modules taking</h3>
                     </div>
-                    {!moduleDetails && modules.map((module) => (
+                    {!moduleDetails && modules && modules.map((module) => (
                             <div key={module.id} className="result">
-                                <div className="result-title" onClick={handleSubmit(module)}>
+                                <div key={module.id} className="result-title" onClick={handleSubmit(module)}>
                                   {module.module_name}
                                 </div>
                             </div>

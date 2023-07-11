@@ -1,23 +1,22 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../../services/SupabaseClient'
 import Todo from './Todo'
-import { fetchTodo, deleteTodo, updateTodo, addTodo } from '../../services/apiService'
+import { deleteTodo, updateTodo, addTodo } from '../../services/apiService'
+import { useLocation } from 'react-router-dom'
 import './TodoList.css'
 
 function TodoList() {
     const[todos, setTodos] = useState([])
     const[newTodo, setNewTodo] = useState('')
 
+    const location = useLocation();
     // authentication
     const user = () => {
         return JSON.parse(sessionStorage.getItem('token')).user;
     }
      // keeps fetching the todos from the database
     useEffect(() => {
-        fetchTodo().then((todos) => {
-            setTodos(todos);
-        })
-    }, [todos])
+        setTodos(JSON.parse(sessionStorage.getItem('todos')));
+    }, [location])
 
 
     // create
@@ -31,14 +30,18 @@ function TodoList() {
 
         // add newTodo to database
         addTodo(newTodo);
+
+        // update the todos directly for faster response
+        setTodos([{id: todos.length, task: newTodo}, ...todos])
+        
+        // clear the input box
+        setNewTodo('');
     }
 
     // to update the newTodo state
     const update = (e) => {
         setNewTodo(e.target.value);
     }
-
-   
 
     if (!user()) {
         return (
@@ -54,7 +57,7 @@ function TodoList() {
             </form>
             <div className="todo-list">
                 {todos && todos.map((todo) => (
-                    <Todo key={todo.id} todo={todo} onDelete={deleteTodo} onUpdate={updateTodo}/>
+                    <Todo key={todo.id} todo={todo} onDelete={deleteTodo} onUpdate={updateTodo} setTodos={setTodos} todos={todos}/>
                 ))}
                 
             </div>

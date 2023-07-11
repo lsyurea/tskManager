@@ -2,6 +2,7 @@ import './SearchDetails.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addModule, fetchNUSModule, deleteModule } from '../../services/apiService';
+import PropTypes from 'prop-types';
 
 
 // Function to fetch all modules
@@ -27,8 +28,12 @@ function SearchDetails( {result, setModuleDetails, toAdd} ) {
             alert('Please login to add module to your list!')
             navigate('/login')
         } else {
-            // Todo: add module to user's list
+            // add module to user's list
             addModule(result.moduleCode)
+            // directly change the state of the module list
+            const modules = JSON.parse(sessionStorage.getItem('modules'));
+            sessionStorage.setItem('modules', JSON.stringify([...modules, result.moduleCode]));
+
             // Navigate to user's list
             navigate('/module')
         }
@@ -37,6 +42,10 @@ function SearchDetails( {result, setModuleDetails, toAdd} ) {
     const handleDelete = (e) => {
         e.preventDefault();
         deleteModule(result.moduleCode)
+        // directly change the state of the module list
+        const modules = JSON.parse(sessionStorage.getItem('modules'));
+        sessionStorage.setItem('modules', JSON.stringify(modules.filter((module) => module !== result.moduleCode)));
+        
         navigate('/module')
     }
 
@@ -91,6 +100,13 @@ function SearchDetails( {result, setModuleDetails, toAdd} ) {
         </div>
 
     )
+}
+
+// can include validation for propTypes
+SearchDetails.propTypes = {
+    result: PropTypes.object.isRequired,
+    setModuleDetails: PropTypes.func.isRequired,
+    toAdd: PropTypes.bool.isRequired,
 }
 
 export default SearchDetails;

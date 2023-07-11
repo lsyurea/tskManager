@@ -1,5 +1,6 @@
 import SearchDetails from './SearchDetails';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './SearchResultList.css';
 
 function SearchResultList({ results }) {
@@ -19,6 +20,10 @@ function SearchResultList({ results }) {
             {moduleDetails && <SearchDetails result = {moduleDetails} setModuleDetails={setModuleDetails} toAdd={true}/>}
         </div>       
     )
+}
+
+SearchResultList.propTypes = {
+    results: PropTypes.array.isRequired,
 }
 
 export default SearchResultList;

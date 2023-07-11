@@ -1,28 +1,6 @@
 import './SignUp.css';
 import { useState, useEffect } from 'react';
-import { supabase } from "../../services/SupabaseClient"
-
-async function checkEmailExists(email) {
-    try {
-      // Query the 'users' table for the given email
-      const { data, error } = await supabase
-        .from('users')
-        .select('id')
-        .eq('email', email)
-        .single();
-  
-      if (error) {
-        console.error('Error querying database:', error.message);
-        return false;
-      }
-  
-      // If 'data' is not null, the email exists in the 'users' table
-      return data !== null;
-    } catch (err) {
-      console.error('Error checking email:', err.message);
-      return false;
-    }
-}
+import { supabase } from '../../services/SupabaseClient';
 
 function SignUp() {
     const [username, setUsername] = useState('');
@@ -50,10 +28,6 @@ function SignUp() {
     async function handleSubmit(event) {
         event.preventDefault();
         // email validation only once
-        if (checkEmailExists(email)) {
-            alert('Email already exists!')
-            return
-        }
 
         try {
             const { data, error } = await supabase.auth.signUp({
@@ -67,7 +41,7 @@ function SignUp() {
                 }
             })
             if (error) {
-                throw error
+                alert(error)
             }
             console.log('Signup submitted:', data);
 

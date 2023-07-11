@@ -3,18 +3,31 @@ import PropTypes from 'prop-types'
 // import { MdDelete } from 'react-icons/md'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 import { useState } from 'react'
+import { deleteTodo, updateTodo } from '../../services/apiService'
 
-const Todo = ({ todo, onDelete, onUpdate }) => {
+const Todo = ({ todo, setTodos, todos }) => {
     const [task, setTask] = useState(todo.task)
     const [edit, setEdit] = useState(false)
     
-    const handleDelete = () => {
-        onDelete(todo.id)
+    const handleDelete = async () =>{
+        // update the todos directly for faster response
+        
+        setTodos(todos.filter((t) => t.id !== todo.id))
+        await deleteTodo(todo.id)
+        
     } 
 
-    const handleUpdate = () => {
-        onUpdate(todo.id, task)
+    const handleUpdate = async () => {
+        // update the todos directly for faster response
+        setTodos(todos.map((t) => {
+            if (t.id === todo.id) {
+                t.task = task
+            }
+            return t
+        }))
+        
         setEdit(false)
+        await updateTodo(todo.id, task)
     }
 
     const handleEdit = () => {
@@ -51,8 +64,8 @@ Todo.propTypes = {
       id: PropTypes.number.isRequired,
       task: PropTypes.string.isRequired,
     }).isRequired,
-    onDelete: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired,
+    setTodos: PropTypes.func.isRequired,
+    todos: PropTypes.array.isRequired,
 };
 
 export default Todo

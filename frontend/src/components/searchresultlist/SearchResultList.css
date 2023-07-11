@@ -10,6 +10,7 @@
     background-color: transparent;
     display: flex;
     flex-direction: column;
+    color: #fff;
 }
 
 .search-result-title {

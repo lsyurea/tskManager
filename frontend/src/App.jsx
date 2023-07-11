@@ -10,29 +10,32 @@ import Module from './components/module/Module'
 import MyCalendar from './components/calendar/MyCalendar'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import ChangePassword from './components/changepassword/ChangePassword'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { fetchTodo, fetchCalendarEvent, fetchModule } from './services/apiService'
 
 function App() {
-  // token is globally accessible
-  const [token, setToken] = useState(null);
 
-  if (token) {
-    sessionStorage.setItem('token', JSON.stringify(token));
-  }
-
-  useEffect(() => {
-    if (sessionStorage.getItem('token')) {
-      setToken(JSON.parse(sessionStorage.getItem('token')));
-    }
-  },[])
 
   // correct routing for deployment purpose
   const basename = '/'
 
+  const [token, setToken] = useState(null)
+
+  if (token) {
+    sessionStorage.setItem('token', JSON.stringify(token))
+    Promise.all([fetchTodo(), fetchCalendarEvent() , fetchModule()])
+  }
+
+  useEffect(() => {
+    if (sessionStorage.getItem('token')) {
+      const token = JSON.parse(sessionStorage.getItem('token'))
+      setToken(token)}
+  }, [])
+
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home token={token}/>,
+      element: <Home/>,
     },
     {
       path: '/login',

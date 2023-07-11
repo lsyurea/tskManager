@@ -1,42 +1,41 @@
 import './Login.css'
 import { useEffect } from 'react'; 
 import { useState } from 'react'
-import { supabase } from "../../services/SupabaseClient"
 import { useNavigate } from 'react-router-dom'
-import Dashboard from '../dashboard/Dashboard';
+import { fetchCalendarEvent, fetchTodo, fetchModule } from '../../services/apiService';
+import { login } from '../../services/authenticationService';
 
-function Login({ setToken }) {
+function Login({setToken}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
      // to prevent manual change to login
-     if (sessionStorage.getItem('token')) {
+    if (sessionStorage.getItem('token')) {
         navigate('/dashboard')
-        return <Dashboard />
     }
 
     async function handleLogin(event) {
+        event.preventDefault();
+
         try {
-            event.preventDefault();
+            console.log('starting login')
+            
             // Perform login logic here
     
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password,
-            })
-            if (error) {
-                throw error
-            }
+            const data = await login(email, password)
+
             if (data.session == null) {
                 alert('Invalid username or password')
             } else {
-
+                
                 // debugging to check for token
-                console.log('Login submitted:', data);
+                // console.log('Login submitted:', data);
                 // set the token to be used for other app.jsx component
-                setToken(data);
-                navigate('/dashboard')
+
+                setToken(data)
+                navigate('/')
+                await Promise.all([fetchCalendarEvent(), fetchTodo(), fetchModule()])
             }
             
             // Reset form fields
