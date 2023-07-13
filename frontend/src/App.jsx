@@ -71,8 +71,8 @@ function App() {
     <>
       <div className="window">
         <Navbar className="bar" />
-
-        <RouterProvider className="card" router={router} />
+        <div className='card'></div>
+        <RouterProvider router={router} />
 
         <Footer/>
       </div>

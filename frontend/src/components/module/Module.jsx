@@ -34,7 +34,7 @@ function Module() {
 
     return (
         <div className='profile'>
-            <h1>Your summary, {user().user_metadata.username}</h1>
+            <div><h1>Your summary, {user().user_metadata.username}</h1></div>
             <div className="profile-card">
                 <div className="profile-card-body">
                     <div className="profile-card-body-item">

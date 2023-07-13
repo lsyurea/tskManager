@@ -5,19 +5,20 @@
     /* position: fixed;
     top: 10rem;
     left: 10rem; */
-    /* height: 600px;
-    
-    width: 100%;
-    min-height: 500px; */
-    aspect-ratio: 10/9;
-    overflow-x:auto;
-    min-width: 670px;
+    height: 600px;
+    width: 700px;
+    /* aspect-ratio: 10/9;
+    min-width: 670px; */
 }
 
 .cal-wrapper {
-    max-height: 80%;
+    height: inherit;
+    width: inherit;
     overflow-x: auto;
     overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: left;
 }
 .cal-in {
     height: 100%;
