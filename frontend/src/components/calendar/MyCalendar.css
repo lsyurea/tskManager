@@ -5,12 +5,19 @@
     /* position: fixed;
     top: 10rem;
     left: 10rem; */
-    height: 600px;
+    /* height: 600px;
     max-height: 80%;
     width: 100%;
-    min-height: 500px;
+    min-height: 500px; */
+    aspect-ratio: 10/9;
+    overflow-x:auto;
+    min-width: 670px;
 }
 
+.cal-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+}
 .cal-in {
     height: 100%;
     width: 100%;
@@ -22,4 +29,8 @@
 
 .rbc-event{
     background-color: #9f7ec4 !important;
+}
+
+.rbc-off-range{
+    color:#fff;
 }

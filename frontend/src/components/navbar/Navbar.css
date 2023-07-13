@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index:0;
+    z-index: 5;
 }
 
 .header .navigation a {
@@ -117,5 +117,4 @@
     position: relative;
     transform: translateX(120px);
    }
-
 }

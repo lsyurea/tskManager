@@ -77,7 +77,7 @@ function MyCalendar() {
 
   return (
     <>
-    <div>
+    <div className="cal-wrapper">
         {!showForm && (
           <div>
             <div className="cal">
