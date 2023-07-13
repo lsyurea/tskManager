@@ -19,3 +19,7 @@
 .rbc-today{
     background-color: rgb(255, 255, 255, 0.3);
 }
+
+.rbc-event{
+    background-color: #9f7ec4 !important;
+}

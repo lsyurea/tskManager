@@ -11,7 +11,7 @@ import { useLocation } from "react-router-dom";
 import "./MyCalendar.css";
 
 const locales = {
-  "en-US": import("date-fns/locale/en-US"),
+  "en-GB": import("date-fns/locale/en-GB"),
 };
 
 
@@ -81,7 +81,11 @@ function MyCalendar() {
         {!showForm && (
           <div>
             <div className="cal">
-              <Calendar className="cal-in" localizer={localizer} events={events? events : []} startAccessor="start" endAccessor="end" components={{
+              <Calendar className="cal-in" localizer={localizer} events={events.map(x => {
+                x.start = new Date(x.start);
+                x.end = new Date(x.end);
+                return x;
+              })} startAccessor="start" endAccessor="end" components={{
                 dateCellWrapper: renderDay,
               }}/>
             </div>

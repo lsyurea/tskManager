@@ -92,13 +92,14 @@ export const fetchCalendarEvent = async () => {
 export const addEvent = async (title, startDate, endDate) => {
     if (!user()) return
     const newEvent =  {
-        user_id: user().id,
         title: title,
-        start: startDate.toISOString(),
-        end: endDate.toISOString(),
+        start: startDate,
+        end: endDate,
     }
     sessionStorage.setItem('events', JSON.stringify([newEvent, ...JSON.parse(sessionStorage.getItem('events'))]));
-
+    newEvent.user_id = user().id;
+    newEvent.start = newEvent.start.toISOString();
+    newEvent.end = newEvent.end.toISOString();
     const { error } = await supabase.from('events').insert(newEvent);
     if (error) {
         alert(error);
