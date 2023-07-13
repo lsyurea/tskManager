@@ -7,12 +7,16 @@ import { useLocation } from 'react-router-dom'
 function Module() {
     const [modules, setModules] = useState([]);
     const [todos, setTodos] = useState([]);
+    const [events, setEvents] = useState([]);
     const [moduleDetails, setModuleDetails] = useState(null);
     const location = useLocation();
     
     useEffect(() => {
         setModules(JSON.parse(sessionStorage.getItem('modules')));
         setTodos(JSON.parse(sessionStorage.getItem('todos')));
+        const cur = JSON.parse(sessionStorage.getItem('events')).filter(e => new Date(e.start) <= new Date() 
+          && new Date(e.end) >= new Date()).map(x => x.title);
+        setEvents(cur);
     }, [location]);
 
 
@@ -41,21 +45,37 @@ function Module() {
                         <h3>Current task</h3>
                     </div>
 
-                    <div>
-                      <h3 style={{textAlign: 'left', margin: '20px'}}>Miscellaneous task from Todo</h3>
+                    <div className="list">
+                      <h3 style={{textAlign: 'left', marginLeft: '20px', textDecoration: 'underline'}}>
+                        Miscellaneous task from Todo
+                      </h3>
                       {todos && todos.map((todo) => (
-                        <div key={todo.id} className="result">
-
-                            <div className="result-title">  
+                        <label key={todo.id}>
+                            <input type="checkbox" name=""></input>
+                            <i></i>
+                            
+                            <span>  
                               {todo.task}
-                            </div>
-                        </div>
+                            </span>
+                        </label>
                       ))}
                     </div>
 
 
-                    <div>
-                      <h3 style={{textAlign: 'left', margin: '20px'}}>Scheduled task from Calendar</h3>
+                    <div className="list">
+                      <h3 style={{textAlign: 'left', marginLeft: '20px', textDecoration: 'underline'}}>
+                        Scheduled task from Calendar
+                      </h3>
+                      {events && events.map((event) => (
+                        <label key={1} className="result">
+                          <input type="checkbox" name=""></input>
+                          <i></i>
+                          <span>
+                            {event}
+                          </span>
+                        </label>
+                      ))}
+
                     </div>
                 </div>
                 <div className="profile-card-body">

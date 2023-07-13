@@ -91,6 +91,7 @@
    .nav-btn {
     visibility: visible;
     opacity: 1;
+    margin: 12px;
    }
 
    nav {
