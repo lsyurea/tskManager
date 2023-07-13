@@ -45,3 +45,9 @@
 .result-title:hover {
     background-color: rgb(255, 255, 255, 0.3);
 }
+
+@media only screen and (max-width: 1200px) {
+    .profile-card {
+        flex-direction: column;
+    }
+}

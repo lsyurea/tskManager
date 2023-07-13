@@ -6,7 +6,7 @@
     top: 10rem;
     left: 10rem; */
     /* height: 600px;
-    max-height: 80%;
+    
     width: 100%;
     min-height: 500px; */
     aspect-ratio: 10/9;
@@ -15,6 +15,7 @@
 }
 
 .cal-wrapper {
+    max-height: 80%;
     overflow-x: auto;
     overflow-y: auto;
 }

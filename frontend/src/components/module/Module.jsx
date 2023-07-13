@@ -42,7 +42,7 @@ function Module() {
                     </div>
 
                     <div>
-                      <h3>Miscellaneous task from Todo</h3>
+                      <h3 style={{textAlign: 'left', margin: '20px'}}>Miscellaneous task from Todo</h3>
                       {todos && todos.map((todo) => (
                         <div key={todo.id} className="result">
 
@@ -55,7 +55,7 @@ function Module() {
 
 
                     <div>
-                      <h3>Scheduled task from Calendar</h3>
+                      <h3 style={{textAlign: 'left', margin: '20px'}}>Scheduled task from Calendar</h3>
                     </div>
                 </div>
                 <div className="profile-card-body">
