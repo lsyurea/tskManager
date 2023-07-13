@@ -81,6 +81,7 @@
     min-width: 400px; */
     /* height: 100%; */
     width: 400px;
+    min-height: 550px;
     height: fit-content;
     
     /* display:flex;
