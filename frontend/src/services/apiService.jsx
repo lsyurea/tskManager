@@ -25,18 +25,17 @@ export const deleteTodo = async (id) => {
     .from('todos')
     .delete()
     .match({ id: id })
+    sessionStorage.setItem('todos', JSON.stringify(JSON.parse(sessionStorage.getItem('todos')).filter((todo) => todo.id !== id)));
 
     if (error) {
         console.log(error)
-    } else {
-        // need to update session storage
-        await TodoStorageUpdate();
-    }
+    } 
 }
 
 // delete all
 export const deleteAllTodo = async () => {
     if (!user()) return
+    sessionStorage.setItem('todos', JSON.stringify([]));
     const { error } = await supabase
     .from('todos')
     .delete()
@@ -44,9 +43,6 @@ export const deleteAllTodo = async () => {
 
     if (error) {
         console.log(error)
-    } else {
-        // need to update session storage
-        await TodoStorageUpdate();
     }
 }
 
@@ -57,17 +53,16 @@ export const addTodo = async (newTodo) => {
     // if newTodo is empty, don't add it
     if (newTodo.trim() === '') return;
     // add newTodo to database
+    const val = { user_id: user().id, task: newTodo }
+    sessionStorage.setItem('todos', JSON.stringify([val, ...JSON.parse(sessionStorage.getItem('todos'))]));
 
     const { error } = await supabase
     .from('todos')
-    .insert({ user_id: user().id, task: newTodo })
+    .insert(val)
 
     if (error) {
         console.log(error)
-    } else {
-        // need to update session storage
-        await TodoStorageUpdate();    
-    }
+    } 
 }
 
 // update
@@ -143,38 +138,34 @@ export const addModule = async (module) => {
 
     // if newTodo is empty, don't add it
     if (module.trim() === '') return;
-
-    // if module code is already in database, don't add it
-    const { data } = await supabase
-    .from('modules')
-    .select('*')
-    .eq('user_id', user().id)
-    .eq('module_name', module)
-
-    if (data.length !== 0) {
-        alert('Module already exists')
-        return
+    const val = { user_id: user().id, module_name: module }
+    const prevVal = JSON.parse(sessionStorage.getItem('modules'));
+    for (let i = 0; i < prevVal.length; i++) {
+        if (prevVal[i].module_name === module) {
+            alert('Module already exists')
+            return;
+        }
     }
 
+    sessionStorage.setItem('modules', JSON.stringify([val, ...prevVal]));
+    console.log("item added", module)
+    
     // add newModules to database
-
     const { error } = await supabase
     .from('modules')
-    .insert({ user_id: user().id, module_name: module })
+    .insert(val)
 
     if (error) {
         console.log(error)
-    } else {
-        // need to update session storage
-        await ModuleStorageUpdate();
-        // alert('Module added to your list!')
-    }
-    
+    } 
 }
 
 export const deleteModule = async (module) => {
     if (!user()) return
-
+    const prevVal = JSON.parse(sessionStorage.getItem('modules'));
+    const curVal = prevVal.filter((val) => {return val.module_name !== module});
+    const newVal = JSON.stringify(curVal);
+    sessionStorage.setItem('modules', newVal);
     const { error } = await supabase
     .from('modules')
     .delete()
@@ -182,12 +173,7 @@ export const deleteModule = async (module) => {
 
     if (error) {
         console.log(error)
-    } else {
-        // need to update session storage
-        await ModuleStorageUpdate();
-        // alert('Module deleted from your list!')
     }
-    
 }
 
 // NUS mods api

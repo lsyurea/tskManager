@@ -22,30 +22,35 @@ function SearchDetails( {result, setModuleDetails, toAdd} ) {
        setModuleDetails(null);
     }
 
-    const handleAdd = (e) => {
+    const handleAdd = async(e) => {
         e.preventDefault();
         if (sessionStorage.getItem('token') === null) {
             alert('Please login to add module to your list!')
             navigate('/login')
         } else {
+            
+            // // directly change the state of the module list
+            // const modules = JSON.parse(sessionStorage.getItem('modules'));
+            // sessionStorage.setItem('modules', JSON.stringify([...modules, result.moduleCode]));
+            // // Navigate to user's list
+            
             // add module to user's list
             addModule(result.moduleCode)
-            // directly change the state of the module list
-            const modules = JSON.parse(sessionStorage.getItem('modules'));
-            sessionStorage.setItem('modules', JSON.stringify([...modules, result.moduleCode]));
-
-            // Navigate to user's list
             navigate('/module')
+
+            
         }
     }
 
-    const handleDelete = (e) => {
+    const handleDelete = async(e) => {
         e.preventDefault();
-        deleteModule(result.moduleCode)
-        // directly change the state of the module list
-        const modules = JSON.parse(sessionStorage.getItem('modules'));
-        sessionStorage.setItem('modules', JSON.stringify(modules.filter((module) => module !== result.moduleCode)));
         
+        // // directly change the state of the module list
+        // const modules = JSON.parse(sessionStorage.getItem('modules'));
+        // sessionStorage.setItem('modules', JSON.stringify(modules.filter((module) => module !== result.moduleCode)));
+        
+        // delete module
+        deleteModule(result.moduleCode)
         navigate('/module')
     }
 

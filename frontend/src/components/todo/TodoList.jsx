@@ -29,13 +29,14 @@ function TodoList() {
         if (newTodo.trim() === '') return;
 
         // add newTodo to database
-        addTodo(newTodo);
+        
 
         // update the todos directly for faster response
         setTodos([{id: todos.length, task: newTodo}, ...todos])
         
         // clear the input box
         setNewTodo('');
+        await addTodo(newTodo);
     }
 
     const handleDeleteAll = async (e) => {
@@ -43,8 +44,9 @@ function TodoList() {
         e.preventDefault();
         
         // delete all todos from database
-        deleteAllTodo();
+        
         setTodos([]);
+        await deleteAllTodo();
 
     }
 

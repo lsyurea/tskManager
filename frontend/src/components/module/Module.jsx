@@ -1,5 +1,5 @@
 import './Module.css'
-import { fetchModule, fetchTodo } from '../../services/apiService'
+// import { fetchModule, fetchTodo } from '../../services/apiService'
 import { useState, useEffect } from 'react'
 import SearchDetails from '../searchresultlist/SearchDetails'
 import { useLocation } from 'react-router-dom'
