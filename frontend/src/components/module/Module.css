@@ -33,6 +33,9 @@
 }
 
 .list input[type="checkbox"]:checked ~ span:before {
+/* 
+    for strike thru animation */
+
     transform: translateY(-50%) scaleX(1.2);
     transform-origin: left;
     transition: transform 0.5s;
@@ -56,7 +59,7 @@
     top: 50%;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 5px;
     background-color: #fff;
     transform: translateY(-50%) scaleX(0);
     transform-origin: right;
