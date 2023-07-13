@@ -7,12 +7,14 @@ import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState, useEffect } from "react";
 import CreateEventForm from "./CreateEventForm";
-import { fetchCalendarEvent } from "../../services/apiService";
+import { useLocation } from "react-router-dom";
 import "./MyCalendar.css";
 
 const locales = {
   "en-US": import("date-fns/locale/en-US"),
 };
+
+
 
 const localizer = dateFnsLocalizer({
   format,
@@ -23,6 +25,7 @@ const localizer = dateFnsLocalizer({
 });
 
 function MyCalendar() {
+  const location = useLocation();
   // authentication
   const user = () => {
     const curToken = JSON.parse(sessionStorage.getItem('token'));
@@ -48,7 +51,7 @@ function MyCalendar() {
 
   useEffect(() => {
     setEvents(JSON.parse(sessionStorage.getItem('events')));
-  }, []);
+  }, [location]);
 
   if (user() == null) {
     return (

@@ -1,14 +1,17 @@
+import "react-datepicker/dist/react-datepicker.css";
 import './CreateEventForm.css'
 import { useEffect } from 'react';
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 import { addEvent } from "../../services/apiService";
+import { useNavigate } from 'react-router-dom';
 
 function CreateEventForm( {extraFunction}) {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +24,7 @@ function CreateEventForm( {extraFunction}) {
     setStartDate(null);
     setEndDate(null);
     extraFunction();
+    navigate('/calendar')
   };
 
   useEffect(() => {
@@ -49,12 +53,13 @@ function CreateEventForm( {extraFunction}) {
           <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
           <label htmlFor="title">Title</label>
         </div>
-        <div className="date-picker">
-          <DatePicker id="startDate" selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect dateFormat="Pp" required/>
+        
+        <div className="dates">
           <label htmlFor="startDate">Start Date</label>
+          <DatePicker id="startDate" className="custom-datepicker" selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect dateFormat="Pp" required/>
         </div>
-        <div className="date-picker">
-          <DatePicker id="endDate" selected={endDate} onChange={(date) => setEndDate(date)} showTimeSelect dateFormat="Pp" required/>
+        <div className="dates">
+          <DatePicker id="endDate" className="custom-datepicker" selected={endDate} onChange={(date) => setEndDate(date)} showTimeSelect dateFormat="Pp" required/>
           <label htmlFor="endDate">End Date</label>
         </div>
         <button className="btn" type="submit">Create Event</button>

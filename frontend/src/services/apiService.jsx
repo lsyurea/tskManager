@@ -82,30 +82,28 @@ export const updateTodo = async (id, task) => {
 export const fetchCalendarEvent = async () => {
     if (!user()) return
     if (!sessionStorage.getItem('events')) {
-        CalendarStorageUpdate();
+        await CalendarStorageUpdate();
     }
     let res = sessionStorage.getItem('events');
     res = JSON.parse(res);
     return res;
   }
 
-    export const addEvent = async (title, startDate, endDate) => {
-        if (!user()) return
-        const { error } = await supabase.from('events').insert([
-        {
-            user_id: user().id,
-            title: title,
-            start: startDate.toISOString(),
-            end: endDate.toISOString(),
-        }
-        ]);
-        if (error) {
-            alert(error);
-        } else {
-            // need to update session storage
-            await CalendarStorageUpdate();
-        }
-    };
+export const addEvent = async (title, startDate, endDate) => {
+    if (!user()) return
+    const newEvent =  {
+        user_id: user().id,
+        title: title,
+        start: startDate.toISOString(),
+        end: endDate.toISOString(),
+    }
+    sessionStorage.setItem('events', JSON.stringify([newEvent, ...JSON.parse(sessionStorage.getItem('events'))]));
+
+    const { error } = await supabase.from('events').insert(newEvent);
+    if (error) {
+        alert(error);
+    } 
+};
 
 // set modules api
 export const fetchModule = async () => {
