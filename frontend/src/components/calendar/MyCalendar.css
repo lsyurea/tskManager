@@ -40,3 +40,6 @@
 .rbc-off-range{
     color:#fff;
 }
+.rbc-toolbar {
+    background-color: rgb(255, 255, 255, 0.3);
+}
