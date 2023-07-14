@@ -43,6 +43,7 @@ function Login({setToken}) {
             setPassword('');
         } catch (error) {
             console.log(error)
+            alert('Invalid username or password')
         }
     }
 
