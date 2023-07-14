@@ -83,7 +83,7 @@ function Login({setToken}) {
                     </div>
                     <div className="remember-forgot">
                         {/* <label><input type="checkbox"/> Remember me</label> */}
-                        <a href="/changePassword">Forgot Password?</a>
+                        {/* <a href="/changePassword">Forgot Password?</a> */}
                     </div>
                     <button type="submit" className="btn">Login</button>
                     <div className="login-register">

@@ -7,12 +7,16 @@ function ChangePassword() {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        console.log(event.data)
+        console.log(email)
         const { data, error } = await supabase.auth.resetPasswordForEmail(email)
 
         if (error) {
             alert(error)
+            return
         }
         console.log('Password changed:', data);
+        alert('Check your (junk) email for the password reset link!')
     }
 
     useEffect(() => {
