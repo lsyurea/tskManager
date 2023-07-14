@@ -14,9 +14,12 @@ function Module() {
     useEffect(() => {
         setModules(JSON.parse(sessionStorage.getItem('modules')));
         setTodos(JSON.parse(sessionStorage.getItem('todos')));
-        const cur = JSON.parse(sessionStorage.getItem('events')).filter(e => new Date(e.start) <= new Date() 
+        const eventsData = JSON.parse(sessionStorage.getItem('events'));
+        if (eventsData) {
+          const cur = eventsData.filter(e => new Date(e.start) <= new Date()
           && new Date(e.end) >= new Date()).map(x => x.title);
-        setEvents(cur);
+          setEvents(cur);
+        }
     }, [location]);
 
 
@@ -24,12 +27,14 @@ function Module() {
         const token = JSON.parse(sessionStorage.getItem('token'));
         return token ? token.user : token;
     }
-    if (!user()) return (
-    <>
-    <div>
-        <h1>Please login first</h1>
-    </div>
-    </>);
+
+    if (user() == null) {
+      return (
+        <>
+          <h1>Please login first</h1>
+        </>
+      )
+    }
 
     const handleSubmit = (module) => () => {
         setModuleDetails({moduleCode: module.module_name});

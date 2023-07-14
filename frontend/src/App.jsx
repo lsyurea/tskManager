@@ -74,7 +74,7 @@ function App() {
         <div className='card'></div>
         <RouterProvider router={router} />
 
-        <Footer/>
+      
       </div>
     </>
   )
