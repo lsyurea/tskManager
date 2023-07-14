@@ -16,9 +16,9 @@
     height: inherit;
     width: inherit;
     overflow: auto;
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: flex-start; */
+    align-items: center;
 }
 .cal-in {
     height: 600px;

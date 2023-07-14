@@ -29,9 +29,9 @@ function Navbar() {
                 <a href="/dashboard">Todo</a>
                 <a href="/module">Profile</a>
                 {sessionStorage.getItem('token') ? <button className="btnLogin-popup" onClick={logout}>Logout</button> : <button className="btnLogin-popup" onClick={loginPopup}>Login</button>}
-                <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+                {/* <button className="nav-btn nav-close-btn" onClick={showNavbar}>
                     <FaTimes />
-                </button>
+                </button> */}
             </nav>
             <button className="nav-btn" onClick={showNavbar}>
                 <FaBars />

@@ -105,7 +105,7 @@
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    background-color: #162938;
+    background-color: #704071;
     transition: 1s;
     transform: translateY(-100vh);
    }
@@ -116,6 +116,6 @@
 
    .nav-close-btn {
     position: relative;
-    transform: translateX(120px);
+    transform: translateX(100vw);
    }
 }

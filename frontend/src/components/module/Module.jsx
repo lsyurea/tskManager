@@ -87,6 +87,7 @@ function Module() {
                     <div className="profile-card-body-item">
                         <h3>Modules taking</h3>
                     </div>
+                    <div style={{height: '30px'}}></div>
                     {!moduleDetails && modules && modules.map((module) => (
                             <div key={module.id} className="result">
                                 <div key={module.id} className="result-title" onClick={handleSubmit(module)}>
