@@ -10,4 +10,4 @@ tskManager Installation process:
 
 
 Tech Stack involved: 
-React, Supabase, HTML, CSS, JS
+React, Supabase, HTML, CSS, JS, PostgreSQL
