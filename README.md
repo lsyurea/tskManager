@@ -1,4 +1,4 @@
-#TskManager4U
+# tskManager4u
 
 tskManager Installation process:
 
@@ -13,3 +13,6 @@ tskManager Installation process:
 
 Tech Stack involved: 
 React, Supabase, HTML, CSS, JS, PostgreSQL
+
+A sample of our project is listed here:
+https://tskmanager4u.netlify.app/
