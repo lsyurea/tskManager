@@ -49,9 +49,13 @@ It can be further modified to use Model View Controller (MVC) architecture by im
 
 ![Evidence](https://github.com/lsyurea/tskManager/assets/96010792/64909580-ba7b-4b56-8010-50f1f52e0145)
 
+- System testing is done right after integration testing using Katalon.
+
+![testing](https://github.com/lsyurea/tskManager/assets/96010792/2dd2076f-6091-415c-8271-10259aebda9b)
+
 ## User Acceptance Testing(UAT)
 
-- Conducted Every Month from July 2023 to August 2023
+- Conducted Every Month from July 2023 to August 2023 right after unit, integration and system testing.
 - User faced the issue whereby the datepicker is not in 'en-GB format' but in MM/DD/YYYY. This issue was subsequently redressed (July)
 - User faced the issue whereby the todo list rendering is too slow while waiting for information to be retrieved from supabase. This was subsequently optimised using session storage. (July)
 
