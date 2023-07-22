@@ -38,13 +38,14 @@ It can be further modified to use Model View Controller (MVC) architecture by im
 ### Development Practices
 
 - Code reviews conducted before merging into main branch.
-- Unit tests written using Jest.
+- Unit tests written using Vitest.
 - Continuous Integration abstracted using GitHub and netlify.
 
 ## Testing
 
 tskManager development follows a test-driven development (TDD) approach.
-Unit testing is performed to verify functionality of each component before Integration testing.
+Unit testing is performed to verify functionality of each component before Integration testing, which is also done using Vitest
+Run npx Vitest to test the components.
 
 ![Evidence](https://github.com/lsyurea/tskManager/assets/96010792/64909580-ba7b-4b56-8010-50f1f52e0145)
 
