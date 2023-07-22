@@ -43,9 +43,9 @@ It can be further modified to use Model View Controller (MVC) architecture by im
 
 ## Testing
 
-tskManager development follows a test-driven development (TDD) approach.
-Unit testing is performed to verify functionality of each component before Integration testing, which is also done using Vitest
-Run npx Vitest to test the components.
+- tskManager development follows a test-driven development (TDD) approach.
+- Unit testing is performed to verify functionality of each component before Integration testing, which is also done using Vitest
+- Run npx Vitest to test the components.
 
 ![Evidence](https://github.com/lsyurea/tskManager/assets/96010792/64909580-ba7b-4b56-8010-50f1f52e0145)
 
@@ -59,13 +59,13 @@ Run npx Vitest to test the components.
 
 tskManager Installation process:
 
-1. Install the latest version of node package manager
-2. Clone this project
-3. create supabase project and place key and url in .env file under frontend, where:
+- Install the latest version of node package manager
+- Clone this project
+- create supabase project and place key and url in .env file under frontend, where:
     VITE_KEY = {{Insert Supabase Key here}}
     VITE_URL = {{Insert Supabase URL here}}
-4. run cd frontend && npm install
-5. run cd frontend && npm run dev for local hosting
+- run cd frontend && npm install
+- run cd frontend && npm run dev for local hosting
 
 ## Tech stack
 
