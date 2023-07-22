@@ -3,9 +3,9 @@ import './CreateEventForm.css'
 import { useEffect } from 'react';
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-
 import { addEvent } from "../../services/apiService";
 import { useNavigate } from 'react-router-dom';
+
 
 function CreateEventForm( {extraFunction}) {
   const [title, setTitle] = useState("");
@@ -56,10 +56,11 @@ function CreateEventForm( {extraFunction}) {
         
         <div className="dates">
           <label htmlFor="startDate">Start Date</label>
-          <DatePicker id="startDate" className="custom-datepicker" selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect dateFormat="Pp" required/>
+          <DatePicker id="startDate" className="custom-datepicker" selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect dateFormat="dd/MM/yyyy, h:mm aa" required/>
         </div>
+
         <div className="dates">
-          <DatePicker id="endDate" className="custom-datepicker" selected={endDate} onChange={(date) => setEndDate(date)} showTimeSelect dateFormat="Pp" required/>
+          <DatePicker id="endDate" className="custom-datepicker" selected={endDate} onChange={(date) => setEndDate(date)} showTimeSelect dateFormat="dd/MM/yyyy, h:mm aa" required/>
           <label htmlFor="endDate">End Date</label>
         </div>
         <button className="btn" type="submit">Create Event</button>

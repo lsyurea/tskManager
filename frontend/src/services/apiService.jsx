@@ -68,12 +68,18 @@ export const addTodo = async (newTodo) => {
 // update
 export const updateTodo = async (id, task) => {
     if (!user()) return
-    const { error } = await supabase.from('todos').update({ task: task }).match({ id: id })
+    const prevVal = JSON.parse(sessionStorage.getItem('todos'));
+    const curVal = prevVal.map((val) => {
+        if (val.id === id) {
+            val.task = task;
+        }
+        return val;
+    });
+    sessionStorage.setItem('todos', JSON.stringify(curVal));
+    
+    const { error } = await supabase.from('todos').update({ task: task }).match({ 'id': id })
     if (error) {
         console.log(error)
-    } else {
-        // need to update session storage
-        await TodoStorageUpdate();
     }
 }
 
