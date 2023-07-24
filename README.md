@@ -27,7 +27,7 @@ It can be further modified to use Model View Controller (MVC) architecture by im
 ### Coding Standards
 
 - JavaScript code follows the Airbnb style guide.
-- CSS code adheres to BEM (Block Element Modifer) methodology.
+- CSS code adheres to BEM (Block Element Modifier) methodology.
 - Consistent indentation
 
 ### Version Control
