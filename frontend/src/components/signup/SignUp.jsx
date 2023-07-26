@@ -31,7 +31,6 @@ function SignUp() {
 
         try {
             const { data, error } = await supabase.auth.signUp({
-                username: username,
                 email: email,
                 password: password,
                 options: {
