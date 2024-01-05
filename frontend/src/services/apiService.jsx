@@ -184,7 +184,8 @@ export const deleteModule = async (module) => {
 // NUS mods api
 
 const apiUrl = 'https://api.nusmods.com/v2/';
-const currentYear = new Date().getFullYear();
+let currentYear = new Date().getFullYear();
+currentYear = new Date().getMonth() < 6 ? currentYear - 1 : currentYear; // if month is before july, then it is still the previous year
 // const currentSemester = new Date().getMonth() < 6 ? 1 : 2;
 const stringYear = `${currentYear}-${currentYear + 1}`;
 
